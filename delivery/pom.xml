@@ -46,7 +46,6 @@
                 </executions>
                 <configuration>
                     <mainClass>dev.graczykmateusz.CashMachineApplication</mainClass>
-                    <finalName>cash-machine-${project.version}</finalName>
                     <skip>false</skip>
                 </configuration>
             </plugin>
