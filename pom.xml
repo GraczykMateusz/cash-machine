@@ -19,6 +19,7 @@
         <module>backend</module>
         <module>frontend</module>
         <module>delivery</module>
+        <module>e2e</module>
     </modules>
 
     <properties>
