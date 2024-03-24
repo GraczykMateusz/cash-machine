@@ -1,0 +1,30 @@
+<div>
+    Hi, {{username}}! ❤
+</div>
+<img ngSrc="assets/en_UK.png" alt="united-kingdom-flag" height="48" width="64">
+<img ngSrc="assets/pl_PL.png" alt="poland-flag" height="48" width="64">
+
+<div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+    <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+</div>
+
+<div>
+    Your balance: {{balance}} {{currency}}
+</div>
+
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <li ngbNavItem>
+        <button ngbNavLink>Accounts</button>
+        <ng-template ngbNavContent>First content</ng-template>
+    </li>
+    <li ngbNavItem>
+        <button ngbNavLink>Savings</button>
+        <ng-template ngbNavContent>Second content</ng-template>
+    </li>
+    <li ngbNavItem>
+        <button ngbNavLink>History</button>
+        <ng-template ngbNavContent>Third content</ng-template>
+    </li>
+</ul>
+<div [ngbNavOutlet]="nav"></div>
