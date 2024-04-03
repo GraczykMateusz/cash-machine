@@ -1,0 +1,11 @@
+.nav-tabs {
+
+  .nav-link.active {
+    background-color: var(--my-blue);
+    color: var(--my-white);
+  }
+
+  .nav-link {
+    color: var(--my-white);
+  }
+}

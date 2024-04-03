@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-end h-100">
+    <div ngbDropdown class="language">
+        <div class="cursor-pointer" id="dropdownBasic1" ngbDropdownToggle>
+            @if (currentLanguage == 'eng') {
+                <img ngSrc="assets/en_UK.png" alt="united-kingdom-flag" height="48" width="64">
+            } @else {
+                <img ngSrc="assets/pl_PL.png" alt="poland-flag" height="48" width="64">
+            }
+        </div>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="changeLanguage('eng')">
+                <img ngSrc="assets/en_UK.png" alt="united-kingdom-flag" height="48" width="64">
+                English
+            </button>
+            <button ngbDropdownItem (click)="changeLanguage('pl')">
+                <img ngSrc="assets/pl_PL.png" alt="poland-flag" height="48" width="64">
+                Polski
+            </button>
+        </div>
+    </div>
+</div>

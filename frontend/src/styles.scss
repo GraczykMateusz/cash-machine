@@ -1,4 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
-
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+/* Importing Fontawesome SCSS file. */
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+:root {
+  --my-white: #e8edeb;
+  --my-blue: #0057da;
+  --my-dark-blue: #001821;
+}
+
+html, body {
+  background-color: var(--my-dark-blue);
+  color: var(--my-white);
+  font-family: "Trebuchet MS", serif;
+}
+
+.cursor-pointer {
+ cursor: pointer;
+}

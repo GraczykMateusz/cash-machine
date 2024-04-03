@@ -1,7 +1,51 @@
-.full-screen-router {
-  width: 100svw;
+.screen-router {
   height: 100svh;
-  justify-content: center;
+  overflow-x: hidden;
   display: flex;
   align-items: start;
+}
+
+.background-image {
+  position: relative;
+  background-image: url("/assets/Bez nazwy.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 30vw;
+
+  h1 {
+    font-family: "Segoe UI", serif;
+    text-shadow: #001e2b 1px 0 10px;
+    font-size: 3.5rem;
+    position: relative;
+    right: 50%;
+    top: 15%;
+  }
+}
+
+
+.background-image-container {
+  display: flex;
+  justify-content: end;
+  background: #00659b;
+  background: linear-gradient(90deg, #001821 0%, #00659b 50%);
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (min-width: 900px) {
+  .screen-router {
+    width: 90%;
+    margin-left: 10%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .screen-router {
+    width: 100%;
+    justify-content: center;
+  }
+  .background-image-container {
+    display: none;
+  }
 }

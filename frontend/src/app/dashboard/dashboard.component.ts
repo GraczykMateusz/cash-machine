@@ -1,13 +1,21 @@
 import { Component } from '@angular/core';
-import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdown, NgbDropdownItem, NgbDropdownMenu, NgbDropdownToggle, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgOptimizedImage } from '@angular/common';
+import { AccountComponent } from '../account/account.component';
+import { LanguageComponent } from '../language/language.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
     NgbNavModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    NgbDropdown,
+    NgbDropdownMenu,
+    NgbDropdownItem,
+    NgbDropdownToggle,
+    AccountComponent,
+    LanguageComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
@@ -15,6 +23,9 @@ import { NgOptimizedImage } from '@angular/common';
 export class DashboardComponent {
   
   username: string = 'Mateusz';
-  balance: number = 100;
-  currency: string = 'PLN';
+  currentLanguage = 'eng';
+  
+  changeLanguage(language: string) {
+    this.currentLanguage = language;
+  }
 }

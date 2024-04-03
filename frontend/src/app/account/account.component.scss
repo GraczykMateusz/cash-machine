@@ -1,0 +1,30 @@
+.account {
+  border-radius: 5px;
+  background-color: #001821;
+  border: var(--my-white) 0.1rem solid;
+
+  p {
+    margin-left: 0.5rem;
+    margin-bottom: 0.1rem;
+  }
+
+  h3, h6 {
+    display: flex;
+    justify-content: center;
+  }
+
+  .account-number {
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: silver;
+    text-shadow: 1px 1px 1px #001e2b;
+  }
+}
+
+.receiver {
+  width: fit-content;
+}
+
+button {
+  background-color: var(--my-blue);
+}
