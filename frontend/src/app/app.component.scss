@@ -1,3 +1,7 @@
+@import 'bootstrap/scss/_functions';
+@import 'bootstrap/scss/_variables';
+@import 'bootstrap/scss/mixins/_breakpoints';
+
 .screen-router {
   height: 100svh;
   overflow-x: hidden;
@@ -7,18 +11,19 @@
 
 .background-image {
   position: relative;
-  background-image: url("/assets/Bez nazwy.png");
+  background-image: url("/assets/modern-office-building-facade.png");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
   width: 30vw;
 
+  display: flex;
+  align-items: center;
+
   h1 {
     font-family: "Segoe UI", serif;
     text-shadow: #001e2b 1px 0 10px;
     font-size: 3.5rem;
-    position: relative;
-    right: 50%;
     top: 15%;
   }
 }
@@ -33,14 +38,14 @@
   width: 100%;
 }
 
-@media screen and (min-width: 900px) {
+@include media-breakpoint-up(md) {
   .screen-router {
     width: 90%;
     margin-left: 10%;
   }
 }
 
-@media screen and (max-width: 900px) {
+@include media-breakpoint-down(md) {
   .screen-router {
     width: 100%;
     justify-content: center;

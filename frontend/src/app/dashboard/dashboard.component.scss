@@ -1,4 +1,9 @@
+@import 'bootstrap/scss/_functions';
+@import 'bootstrap/scss/_variables';
+@import 'bootstrap/scss/mixins/_breakpoints';
+
 .nav-tabs {
+  display: inline-grid;
 
   .nav-link.active {
     background-color: var(--my-blue);
@@ -7,5 +12,24 @@
 
   .nav-link {
     color: var(--my-white);
+  }
+
+  li button {
+    width: 5.8rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .nav-tabs {
+    width: 98%;
+    justify-content: center;
+    grid-template-columns: repeat(2, 6rem);
+  }
+}
+
+
+@media screen and (min-width: 500px) {
+  .nav-tabs {
+    grid-template-columns: repeat(4, 6rem);
   }
 }

@@ -4,10 +4,16 @@
 /* Importing Fontawesome SCSS file. */
 @import "@fortawesome/fontawesome-free/css/all.css";
 
+@import 'bootstrap/scss/_functions';
+@import 'bootstrap/scss/_variables';
+@import 'bootstrap/scss/mixins/_breakpoints';
+
 :root {
   --my-white: #e8edeb;
   --my-blue: #0057da;
   --my-dark-blue: #001821;
+
+  font-size: 15px;
 }
 
 html, body {
@@ -17,5 +23,35 @@ html, body {
 }
 
 .cursor-pointer {
- cursor: pointer;
+  cursor: pointer;
+}
+
+@include media-breakpoint-down(sm) {
+  :root {
+    font-size: 10px;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  :root {
+    font-size: 15px;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+@include media-breakpoint-down(xl) {
+  :root {
+    font-size: 17px;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  :root {
+    font-size: 18px;
+  }
 }
