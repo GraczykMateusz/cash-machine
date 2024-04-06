@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
+import { CurrencyPipe, DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [],
+  imports: [
+    DecimalPipe,
+    CurrencyPipe
+  ],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })
@@ -11,6 +15,6 @@ export class CardComponent {
   
   accountType: string = 'PLATINUM';
   accountNumber: string = '0123 4567 8901 2345';
-  balance: string = '1000000000';
+  balance: number = 900000.28;
   currency: string = 'PLN';
 }
