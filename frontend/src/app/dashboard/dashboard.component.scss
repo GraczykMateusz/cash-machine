@@ -3,7 +3,10 @@
 @import 'bootstrap/scss/mixins/_breakpoints';
 
 .nav-tabs {
-  display: inline-grid;
+  display: flex;
+  overflow-x: auto;
+  overflow-y:hidden;
+  flex-wrap: nowrap;
 
   .nav-link.active {
     background-color: var(--my-blue);
@@ -16,20 +19,5 @@
 
   li button {
     width: 5.8rem;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .nav-tabs {
-    width: 98%;
-    justify-content: center;
-    grid-template-columns: repeat(2, 6rem);
-  }
-}
-
-
-@media screen and (min-width: 500px) {
-  .nav-tabs {
-    grid-template-columns: repeat(4, 6rem);
   }
 }
