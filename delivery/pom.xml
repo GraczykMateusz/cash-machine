@@ -45,7 +45,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>dev.graczykmateusz.CashMachineApplication</mainClass>
+                    <mainClass>dev.graczykmateusz.cashmachine.CashMachineApplication</mainClass>
                     <skip>false</skip>
                 </configuration>
             </plugin>
