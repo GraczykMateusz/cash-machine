@@ -1,0 +1,63 @@
+.account {
+  background-image: url("/assets/card.png");
+  background-size: cover;
+  border: var(--my-white) 0.1rem solid;
+  border-radius: 5px;
+  padding: 1rem;
+
+  i {
+    display: flex;
+    justify-content: end;
+    color: var(--my-dark-blue);
+  }
+
+  :not(i) {
+    text-shadow: 1px 1px 1px var(--my-white);
+    color: var(--my-dark-blue);
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+
+  h2,
+  h3,
+  h4 {
+    font-family: "Calibri", serif;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+  }
+
+  .account-type {
+    letter-spacing: 3px;
+  }
+
+  .balance {
+
+  }
+
+  //h4, h5 {
+  //  display: flex;
+  //  justify-content: end;
+  //  align-items: center;
+  //}
+  //
+  //h6.account-type {
+  //  font-size: 1.5rem;
+  //}
+  //
+  //h1.account-number {
+  //  letter-spacing: 3px;
+  //  font-size: 0.85rem;
+  //  font-weight: 600;
+  //}
+
+}
