@@ -1,0 +1,33 @@
+<ul ngbNav #nav="ngbNav" class="nav-tabs pt-2">
+    <li ngbNavItem>
+        <button ngbNavLink class="d-flex flex-column align-items-center">
+            <i class="fa-solid fa-landmark fa-2x"></i>
+            Account
+        </button>
+        <ng-template ngbNavContent>
+            <app-account></app-account>
+        </ng-template>
+    </li>
+    <li ngbNavItem>
+        <button ngbNavLink class="d-flex flex-column align-items-center">
+            <i class="fa-solid fa-piggy-bank fa-2x"></i>
+            Savings
+        </button>
+        <ng-template ngbNavContent>Second content</ng-template>
+    </li>
+    <li ngbNavItem>
+        <button ngbNavLink class="d-flex flex-column align-items-center">
+            <i class="fa-solid fa-money-bill-trend-up fa-2x"></i>
+            Forex
+        </button>
+        <ng-template ngbNavContent>Second content</ng-template>
+    </li>
+    <li ngbNavItem>
+        <button ngbNavLink class="d-flex flex-column align-items-center">
+            <i class="fa-solid fa-list fa-2x"></i>
+            History
+        </button>
+        <ng-template ngbNavContent>Fourth content</ng-template>
+    </li>
+</ul>
+<div [ngbNavOutlet]="nav"></div>

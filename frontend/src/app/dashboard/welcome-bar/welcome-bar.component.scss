@@ -1,0 +1,16 @@
+h6 {
+  letter-spacing: 1px;
+}
+
+.gradient-text {
+  background-image: -webkit-linear-gradient(to right, var(--my-dark-red), var(--my-pink));
+  background-image: -moz-linear-gradient(to right, var(--my-dark-red), var(--my-pink));
+  background-image: -o-linear-gradient(to right, var(--my-dark-red), var(--my-pink));
+  background-image: linear-gradient(to right, var(--my-dark-red), var(--my-pink));
+
+  background-size: 100%;
+  background-repeat: repeat;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
