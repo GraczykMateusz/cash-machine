@@ -1,6 +1,6 @@
-h6 {
-  letter-spacing: 1px;
-}
+@import 'bootstrap/scss/_functions';
+@import 'bootstrap/scss/_variables';
+@import 'bootstrap/scss/mixins/_breakpoints';
 
 .gradient-text {
   background-image: -webkit-linear-gradient(to right, var(--my-dark-red), var(--my-pink));
@@ -13,4 +13,24 @@ h6 {
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+h1:after {
+  content: '👋';
+}
+
+h6 {
+  letter-spacing: 1px;
+}
+
+@include media-breakpoint-up(md) {
+  h6 {
+    display: none;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  h1:after {
+    content: '';
+  }
 }

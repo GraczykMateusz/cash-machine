@@ -11,6 +11,10 @@
   align-items: start;
 }
 
+.text-highlight {
+  color: var(--my-pink);
+}
+
 @include media-breakpoint-up(md) {
   .router-wrapper {
     width: 50%;
@@ -72,10 +76,5 @@
 @include media-breakpoint-down(sm) {
   .router-wrapper {
     width: 100%;
-    padding: 1rem;
-  }
-
-  .background-image-container {
-    display: none;
   }
 }
