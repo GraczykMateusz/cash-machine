@@ -10,7 +10,6 @@
 }
 
 .background-image {
-  position: relative;
   background-image: url("/assets/office-building.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -28,12 +27,11 @@
   }
 }
 
-
 .background-image-container {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: end;
-  background: #00659b;
-  background: linear-gradient(90deg, #001821 0%, #00659b 50%);
   height: 100%;
   width: 100%;
 }

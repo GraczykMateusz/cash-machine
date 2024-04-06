@@ -10,16 +10,15 @@
 
 :root {
   --my-white: #e8edeb;
+  --my-light-blue: #00659b;
   --my-blue: #0057da;
   --my-dark-blue: #001821;
   --my-pink: #bb18fc;
   --my-dark-red: #a10000;
-
-  font-size: 15px;
 }
 
 html, body {
-  background-color: var(--my-dark-blue);
+  background: linear-gradient(90deg, var(--my-dark-blue) 30%, var(--my-light-blue) 100%);
   color: var(--my-white);
   font-family: "Trebuchet MS", serif;
 }
@@ -56,6 +55,11 @@ html, body {
   :root {
     font-size: 18px;
   }
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--my-dark-blue);
 }
 
 ::-webkit-scrollbar {
