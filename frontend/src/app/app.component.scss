@@ -2,52 +2,79 @@
 @import 'bootstrap/scss/_variables';
 @import 'bootstrap/scss/mixins/_breakpoints';
 
-.screen-router {
+.app-wrapper {
   height: 100svh;
+  width: 100%;
+  justify-content: center;
   overflow-x: hidden;
   display: flex;
   align-items: start;
 }
 
-.background-image {
-  background-image: url("/assets/office-building.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100%;
-  width: 30vw;
+@include media-breakpoint-up(md) {
+  .router-wrapper {
+    width: 50%;
+    padding: 1rem;
+  }
 
-  display: flex;
-  align-items: center;
+  .background-image {
+    background-image: url("/assets/office-building.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+  }
 
   h1 {
+    position: absolute;
+    text-align: center;
     font-family: "Segoe UI", serif;
-    text-shadow: #001e2b 1px 0 10px;
+    text-shadow: var(--my-dark-blue) 5px 0 10px;
     font-size: 3.5rem;
-    top: 15%;
+    margin: 10%;
+  }
+
+  .background-image-container {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: end;
+    height: 100%;
+    width: 50%;
   }
 }
 
-.background-image-container {
-  position: sticky;
-  top: 0;
-  display: flex;
-  justify-content: end;
-  height: 100%;
-  width: 100%;
+@include media-breakpoint-up(xl) {
+  h1 {
+    font-size: 4rem;
+  }
 }
 
-@include media-breakpoint-up(md) {
-  .screen-router {
-    width: 90%;
-    margin-left: 10%;
+@include media-breakpoint-up(xxl) {
+  h1 {
+    font-size: 4.8rem;
   }
 }
 
 @include media-breakpoint-down(md) {
-  .screen-router {
-    width: 100%;
-    justify-content: center;
+  .router-wrapper {
+    width: 80%;
+    padding: 1rem;
   }
+
+  .background-image-container {
+    display: none;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .router-wrapper {
+    width: 100%;
+    padding: 1rem;
+  }
+
   .background-image-container {
     display: none;
   }
