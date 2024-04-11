@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { TransactionCardComponent } from './ui/transaction-card/transaction-card.component';
+import { TransactionsTableComponent } from './ui/transactions-table/transactions-table.component';
 
 @Component({
   selector: 'app-history',
   standalone: true,
   imports: [
-    TransactionCardComponent
+    TransactionsTableComponent
   ],
   templateUrl: './history.component.html',
   styleUrl: './history.component.scss'
