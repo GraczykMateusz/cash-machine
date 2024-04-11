@@ -13,21 +13,21 @@
             <i class="fa-solid fa-piggy-bank fa-2x"></i>
             Savings
         </button>
-        <ng-template ngbNavContent>Second content</ng-template>
+        <ng-template ngbNavContent><app-savings></app-savings></ng-template>
     </li>
     <li ngbNavItem>
         <button ngbNavLink class="d-flex flex-column align-items-center">
             <i class="fa-solid fa-money-bill-trend-up fa-2x"></i>
             Forex
         </button>
-        <ng-template ngbNavContent>Second content</ng-template>
+        <ng-template ngbNavContent><app-forex></app-forex></ng-template>
     </li>
     <li ngbNavItem>
         <button ngbNavLink class="d-flex flex-column align-items-center">
             <i class="fa-solid fa-list fa-2x"></i>
             History
         </button>
-        <ng-template ngbNavContent>Fourth content</ng-template>
+        <ng-template ngbNavContent><app-history></app-history></ng-template>
     </li>
 </ul>
 <div [ngbNavOutlet]="nav"></div>

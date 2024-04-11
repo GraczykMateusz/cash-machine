@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { AccountComponent } from '../../account/account.component';
+import { AccountComponent } from '../../../account/account.component';
 import { NgbNav, NgbNavContent, NgbNavItem, NgbNavItemRole, NgbNavLinkBase, NgbNavLinkButton, NgbNavOutlet } from '@ng-bootstrap/ng-bootstrap';
+import { HistoryComponent } from '../../../history/history.component';
+import { ForexComponent } from '../../../forex/forex.component';
+import { SavingsComponent } from '../../../savings/savings.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,7 +16,10 @@ import { NgbNav, NgbNavContent, NgbNavItem, NgbNavItemRole, NgbNavLinkBase, NgbN
     NgbNavItemRole,
     NgbNavLinkBase,
     NgbNavLinkButton,
-    NgbNavOutlet
+    NgbNavOutlet,
+    HistoryComponent,
+    ForexComponent,
+    SavingsComponent
   ],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss'

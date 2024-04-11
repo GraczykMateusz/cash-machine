@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CardComponent } from './card/card.component';
-import { TransactionFormComponent } from './transaction-form/transaction-form.component';
+import { CardComponent } from './ui/card/card.component';
+import { TransactionFormComponent } from './ui/transaction-form/transaction-form.component';
 
 @Component({
   selector: 'app-account',
