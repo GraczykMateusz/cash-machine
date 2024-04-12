@@ -1,4 +1,4 @@
-package dev.graczykmateusz.cashmachine.forex.scheduler;
+package dev.graczykmateusz.cashmachine.forex.client;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -6,18 +6,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
-class ForexSchedulerConfiguration {
+class ForexClientConfiguration {
 
   @Bean
-  ForexScheduler forexSheduler(
+  ForexClient forexClient(
       WebClient webClient,
       @Value("${polygon.aggs.api.url}") String url,
       @Value("${polygon.api.key}") String apiKey) {
-
     var polygonApiSettings = new PolygonApiSettings(url, apiKey);
-    var forexClient = new ForexClient(webClient, polygonApiSettings);
-    var forexApiRespondedPublisher = new ForexApiRespondedPublisher();
-    
-    return new ForexScheduler(forexClient, forexApiRespondedPublisher);
+    return new ForexClient(webClient, polygonApiSettings);
   }
 }
