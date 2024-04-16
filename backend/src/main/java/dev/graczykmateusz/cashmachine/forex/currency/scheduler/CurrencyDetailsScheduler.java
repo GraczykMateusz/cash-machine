@@ -1,7 +1,7 @@
 package dev.graczykmateusz.cashmachine.forex.currency.scheduler;
 
+import dev.graczykmateusz.cashmachine.abstraction.event.DomainEventPublisher;
 import dev.graczykmateusz.cashmachine.forex.client.CurrencyForexClient;
-import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyDetailsForexResponseDto;
 import dev.graczykmateusz.cashmachine.forex.currency.scheduler.event.CurrencyDetailsForexResponded;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -10,12 +10,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 class CurrencyDetailsScheduler {
 
   private final CurrencyForexClient currencyForexClient;
-  private final CurrencyDetailsApiRespondedPublisher publisher;
+  private final DomainEventPublisher<CurrencyDetailsForexResponded> publisher;
 
   @Scheduled(fixedDelay = 60000)
-  void updateCurrencyDetails() {
-    CurrencyDetailsForexResponseDto currencyDetailsApiResponse =
-        currencyForexClient.retrieveCurrencyDetails();
+  void retrieveCurrencyDetails() {
+    var currencyDetailsApiResponse = currencyForexClient.retrieveCurrencyDetails();
     publisher.publish(new CurrencyDetailsForexResponded(currencyDetailsApiResponse));
   }
 }

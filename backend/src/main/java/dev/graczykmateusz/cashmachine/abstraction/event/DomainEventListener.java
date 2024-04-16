@@ -1,6 +1,6 @@
 package dev.graczykmateusz.cashmachine.abstraction.event;
 
-public interface DomainEventListener {
+public interface DomainEventListener<T extends DomainEvent> {
     
-    void listen(DomainEvent event);
+    void listen(T event);
 }

@@ -1,6 +1,6 @@
 package dev.graczykmateusz.cashmachine.abstraction.event;
 
-public interface DomainEventPublisher {
+public interface DomainEventPublisher<T extends DomainEvent> {
 
-  void publish(DomainEvent event);
+  void publish(T event);
 }
