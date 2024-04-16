@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(path = "/api/v1/forex")
-class ForexController {
+class CurrencyController {
 
   private final QueryHandlerExecutor queryHandlerExecutor;
   

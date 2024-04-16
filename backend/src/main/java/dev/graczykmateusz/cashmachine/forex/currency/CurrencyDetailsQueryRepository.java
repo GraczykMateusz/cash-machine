@@ -1,3 +1,8 @@
 package dev.graczykmateusz.cashmachine.forex.currency;
 
-interface CurrencyDetailsQueryRepository {}
+import java.util.List;
+
+interface CurrencyDetailsQueryRepository {
+  
+  List<CurrencyDetails> findAll();
+}

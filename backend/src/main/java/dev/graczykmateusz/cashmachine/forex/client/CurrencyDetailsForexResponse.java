@@ -7,11 +7,16 @@ import java.util.List;
 import lombok.*;
 
 @Getter
+@Setter
+@NoArgsConstructor
+@Data
+@AllArgsConstructor
 class CurrencyDetailsForexResponse {
 
   @JsonProperty("ticker")
   String exchangeSymbol;
-
+  
+  @JsonProperty("results")
   List<CurrencyPriceForexResponse> currencyPrice;
 
   CurrencyDetailsForexResponseDto toDto() {

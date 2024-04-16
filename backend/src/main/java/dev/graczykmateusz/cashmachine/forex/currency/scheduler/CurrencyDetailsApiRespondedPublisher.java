@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationEventPublisher;
 @RequiredArgsConstructor
 class CurrencyDetailsApiRespondedPublisher implements DomainEventPublisher {
 
-  private ApplicationEventPublisher publisher;
+  private final ApplicationEventPublisher publisher;
 
   @Override
   public void publish(DomainEvent event) {

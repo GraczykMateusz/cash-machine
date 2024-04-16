@@ -1,6 +1,7 @@
 package dev.graczykmateusz.cashmachine.forex.currency.scheduler;
 
 import dev.graczykmateusz.cashmachine.forex.client.CurrencyForexClient;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,8 +9,10 @@ import org.springframework.context.annotation.Configuration;
 class CurrencyDetailsSchedulerConfiguration {
 
   @Bean
-  CurrencyDetailsScheduler currencyDetailsScheduler(CurrencyForexClient currencyForexClient) {
-    var forexApiRespondedPublisher = new CurrencyDetailsApiRespondedPublisher();
+  CurrencyDetailsScheduler currencyDetailsScheduler(
+          CurrencyForexClient currencyForexClient,
+          ApplicationEventPublisher applicationEventPublisher) {
+    var forexApiRespondedPublisher = new CurrencyDetailsApiRespondedPublisher(applicationEventPublisher);
     return new CurrencyDetailsScheduler(currencyForexClient, forexApiRespondedPublisher);
   }
 }

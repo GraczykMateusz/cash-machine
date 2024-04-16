@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 class ForexClientConfiguration {
-
+  
   @Bean
   ForexClient forexClient(
       WebClient webClient,

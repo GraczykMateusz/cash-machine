@@ -6,12 +6,13 @@ import org.springframework.context.event.EventListener;
 
 @RequiredArgsConstructor
 class CurrencyDetailsApiRespondedListener {
-    
-    private final CurrencyDetailsRepository currencyDetailsRepository;
-    
-    @EventListener
-    public void listen(CurrencyDetailsForexResponded event) {
-        
-        currencyDetailsRepository.save();
-    }
+
+  private final CurrencyDetailsRepository currencyDetailsRepository;
+
+  @EventListener
+  public void listen(CurrencyDetailsForexResponded event) {
+    CurrencyDetails currencyDetails =
+        CurrencyDetails.toDomain(event.currencyDetailsForexResponseDto());
+    currencyDetailsRepository.save(currencyDetails);
+  }
 }
