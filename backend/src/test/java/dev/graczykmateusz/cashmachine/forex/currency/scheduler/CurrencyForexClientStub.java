@@ -3,13 +3,15 @@ package dev.graczykmateusz.cashmachine.forex.currency.scheduler;
 import dev.graczykmateusz.cashmachine.forex.client.CurrencyForexClient;
 import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyDetailsForexResponseDto;
 import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyPriceForexResponseDto;
+import reactor.core.publisher.Mono;
+
 import java.math.BigDecimal;
 import java.util.List;
 
 class CurrencyForexClientStub implements CurrencyForexClient {
   
   @Override
-  public CurrencyDetailsForexResponseDto retrieveCurrencyDetails() {
+  public Mono<CurrencyDetailsForexResponseDto> retrieveCurrencyDetails() {
     var currencyPriceForexResponseDto =
         new CurrencyPriceForexResponseDto(
             BigDecimal.valueOf(0),

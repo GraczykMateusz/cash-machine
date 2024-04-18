@@ -1,27 +1,27 @@
 package dev.graczykmateusz.cashmachine.forex.client;
 
 import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyDetailsForexResponseDto;
+import dev.graczykmateusz.cashmachine.forex.constants.AvailableCurrencyPair;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 class ForexClient implements CurrencyForexClient {
 
   private final WebClient webClient;
+  private final PolygonUrlBuilder polygonUrlBuilder;
   private final PolygonApiSettings polygonApiSettings;
-
+  
   @Override
-  public CurrencyDetailsForexResponseDto retrieveCurrencyDetails() {
-    String url = polygonApiSettings.url();
-    String api = polygonApiSettings.apiKey();
+  public Mono<CurrencyDetailsForexResponseDto> retrieveCurrencyDetails(AvailableCurrencyPair availableCurrencyPair) {
+    String url = polygonUrlBuilder.build(availableCurrencyPair);
     return webClient
         .get()
-        .uri(
-            url
-                + "C:EURPLN/range/1/day/2023-01-09/2023-01-09?adjusted=true&sort=asc&limit=120&apiKey="
-                + api)
+        .uri(url)
+        .header("Authorization", "Bearer " + String.valueOf(polygonApiSettings.apiKey()))
         .retrieve()
         .bodyToMono(CurrencyDetailsForexResponse.class)
-        .block().toDto();
+        .map(CurrencyDetailsForexResponse::toDto);
   }
 }
