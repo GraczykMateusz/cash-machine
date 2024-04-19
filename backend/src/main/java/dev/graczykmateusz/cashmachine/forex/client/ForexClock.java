@@ -9,9 +9,7 @@ class ForexClock {
   private final Clock clock;
 
   long getFrom() {
-    long epochMilli = getOneYearBeforeCurrentDateInstant().minusSeconds(1).toEpochMilli();
-    System.out.println(epochMilli);
-    return epochMilli;
+    return getOneYearBeforeCurrentDateInstant().minusSeconds(1).toEpochMilli();
   }
 
   long getTo() {

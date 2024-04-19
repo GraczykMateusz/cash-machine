@@ -7,4 +7,6 @@ import reactor.core.publisher.Mono;
 public interface CurrencyForexClient {
     
     Mono<CurrencyDetailsForexResponseDto> retrieveCurrencyDetails(AvailableCurrencyPair availableCurrencyPair);
+    
+    Mono<CurrencyDetailsForexResponseDto> retrieveHistoricalDetails(AvailableCurrencyPair availableCurrencyPair);
 }

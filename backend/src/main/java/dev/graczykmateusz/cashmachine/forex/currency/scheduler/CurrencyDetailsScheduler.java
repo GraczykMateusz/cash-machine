@@ -4,6 +4,7 @@ import static dev.graczykmateusz.cashmachine.forex.constants.AvailableCurrencyPa
 
 import dev.graczykmateusz.cashmachine.abstraction.event.DomainEventPublisher;
 import dev.graczykmateusz.cashmachine.forex.client.CurrencyForexClient;
+import dev.graczykmateusz.cashmachine.forex.constants.AvailableCurrencyPair;
 import dev.graczykmateusz.cashmachine.forex.currency.scheduler.event.CurrencyDetailsForexResponded;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,34 +19,25 @@ class CurrencyDetailsScheduler {
 
   @Scheduled(fixedDelay = 60000)
   void retrieveEURPLNCurrencyDetails() {
-    var currencyDetailsApiResponse = currencyForexClient.retrieveCurrencyDetails(EURPLN);
-    currencyDetailsApiResponse.subscribe(
-        currencyDetailsForexResponseDto -> {
-          log.debug(
-              "Got currency details API (EURPLN) response: {}", currencyDetailsForexResponseDto);
-          publisher.publish(new CurrencyDetailsForexResponded(currencyDetailsForexResponseDto));
-        });
+    retrieveCurrencyDetails(EURPLN);
   }
 
   @Scheduled(fixedDelay = 60000)
   void retrieveUSDPLNCurrencyDetails() {
-    var currencyDetailsApiResponse = currencyForexClient.retrieveCurrencyDetails(USDPLN);
-    currencyDetailsApiResponse.subscribe(
-        currencyDetailsForexResponseDto -> {
-          log.debug(
-              "Got currency details API (USDPLN) response: {}", currencyDetailsForexResponseDto);
-          publisher.publish(new CurrencyDetailsForexResponded(currencyDetailsForexResponseDto));
-        });
+    retrieveCurrencyDetails(USDPLN);
   }
 
   @Scheduled(fixedDelay = 60000)
   void retrieveGBPPLNCurrencyDetails() {
-    var currencyDetailsApiResponse = currencyForexClient.retrieveCurrencyDetails(GBPPLN);
+    retrieveCurrencyDetails(GBPPLN);
+  }
+
+  private void retrieveCurrencyDetails(AvailableCurrencyPair availableCurrencyPair) {
+    var currencyDetailsApiResponse =
+        currencyForexClient.retrieveCurrencyDetails(availableCurrencyPair);
+    
     currencyDetailsApiResponse.subscribe(
-        currencyDetailsForexResponseDto -> {
-          log.debug(
-              "Got currency details API (GBPPLN) response: {}", currencyDetailsForexResponseDto);
-          publisher.publish(new CurrencyDetailsForexResponded(currencyDetailsForexResponseDto));
-        });
+        currencyDetailsForexResponseDto ->
+            publisher.publish(new CurrencyDetailsForexResponded(currencyDetailsForexResponseDto)));
   }
 }

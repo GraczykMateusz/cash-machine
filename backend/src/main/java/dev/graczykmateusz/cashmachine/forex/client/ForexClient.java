@@ -24,4 +24,9 @@ class ForexClient implements CurrencyForexClient {
         .bodyToMono(CurrencyDetailsForexResponse.class)
         .map(CurrencyDetailsForexResponse::toDto);
   }
+  
+  @Override
+  public Mono<CurrencyDetailsForexResponseDto> retrieveHistoricalDetails(AvailableCurrencyPair availableCurrencyPair) {
+    return null;
+  }
 }

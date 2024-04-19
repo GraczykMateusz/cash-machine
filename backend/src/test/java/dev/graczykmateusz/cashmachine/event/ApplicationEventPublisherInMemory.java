@@ -19,6 +19,6 @@ public class ApplicationEventPublisherInMemory implements ApplicationEventPublis
   }
 
   public List<Object> getEvents() {
-    return List.of(events);
+    return Collections.unmodifiableList(events);
   }
 }
