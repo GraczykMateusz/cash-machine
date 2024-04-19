@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "currency-details")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 class CurrencyDetails {
 

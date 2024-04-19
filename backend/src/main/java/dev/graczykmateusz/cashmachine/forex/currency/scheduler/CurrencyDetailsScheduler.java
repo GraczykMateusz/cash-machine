@@ -6,8 +6,10 @@ import dev.graczykmateusz.cashmachine.abstraction.event.DomainEventPublisher;
 import dev.graczykmateusz.cashmachine.forex.client.CurrencyForexClient;
 import dev.graczykmateusz.cashmachine.forex.currency.scheduler.event.CurrencyDetailsForexResponded;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 
+@Slf4j
 @RequiredArgsConstructor
 class CurrencyDetailsScheduler {
 
@@ -17,21 +19,21 @@ class CurrencyDetailsScheduler {
   @Scheduled(fixedDelay = 60000)
   void retrieveEURPLNCurrencyDetails() {
     var currencyDetailsApiResponse = currencyForexClient.retrieveCurrencyDetails(EURPLN);
-    System.out.println(Thread.currentThread().getName());
     currencyDetailsApiResponse.subscribe(
-            currencyDetailsForexResponseDto -> {
-              System.out.println("THREAD ->" + Thread.currentThread().getName() + "; VALUE ->" + currencyDetailsForexResponseDto);
-              publisher.publish(new CurrencyDetailsForexResponded(currencyDetailsForexResponseDto));
-            });
+        currencyDetailsForexResponseDto -> {
+          log.debug(
+              "Got currency details API (EURPLN) response: {}", currencyDetailsForexResponseDto);
+          publisher.publish(new CurrencyDetailsForexResponded(currencyDetailsForexResponseDto));
+        });
   }
 
   @Scheduled(fixedDelay = 60000)
   void retrieveUSDPLNCurrencyDetails() {
     var currencyDetailsApiResponse = currencyForexClient.retrieveCurrencyDetails(USDPLN);
-    System.out.println(Thread.currentThread().getName());
     currencyDetailsApiResponse.subscribe(
         currencyDetailsForexResponseDto -> {
-          System.out.println("THREAD ->" + Thread.currentThread().getName() + "; VALUE ->" + currencyDetailsForexResponseDto);
+          log.debug(
+              "Got currency details API (USDPLN) response: {}", currencyDetailsForexResponseDto);
           publisher.publish(new CurrencyDetailsForexResponded(currencyDetailsForexResponseDto));
         });
   }
@@ -39,11 +41,11 @@ class CurrencyDetailsScheduler {
   @Scheduled(fixedDelay = 60000)
   void retrieveGBPPLNCurrencyDetails() {
     var currencyDetailsApiResponse = currencyForexClient.retrieveCurrencyDetails(GBPPLN);
-    System.out.println(Thread.currentThread().getName());
     currencyDetailsApiResponse.subscribe(
-            currencyDetailsForexResponseDto -> {
-              System.out.println("THREAD ->" + Thread.currentThread().getName() + "; VALUE ->" + currencyDetailsForexResponseDto);
-              publisher.publish(new CurrencyDetailsForexResponded(currencyDetailsForexResponseDto));
-            });
+        currencyDetailsForexResponseDto -> {
+          log.debug(
+              "Got currency details API (GBPPLN) response: {}", currencyDetailsForexResponseDto);
+          publisher.publish(new CurrencyDetailsForexResponded(currencyDetailsForexResponseDto));
+        });
   }
 }

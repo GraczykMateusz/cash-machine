@@ -17,8 +17,22 @@ class CurrencyDetailsSchedulerTest {
           .currencyDetailsScheduler();
 
   @Test
-  void shouldRetrieveApiResponseAndThenPublishItAsCurrencyDetailsForexRespondedEvent() {
-    currencyDetailsScheduler.retrieveCurrencyDetails();
+  void shouldRetrieveEURPLNApiResponseAndThenPublishItAsCurrencyDetailsForexRespondedEvent() {
+    currencyDetailsScheduler.retrieveEURPLNCurrencyDetails();
+    List<Object> events = eventPublisher.getEvents();
+    assertThat(events).hasSize(1);
+  }
+  
+  @Test
+  void shouldRetrieveUSDPLNApiResponseAndThenPublishItAsCurrencyDetailsForexRespondedEvent() {
+    currencyDetailsScheduler.retrieveUSDPLNCurrencyDetails();
+    List<Object> events = eventPublisher.getEvents();
+    assertThat(events).hasSize(1);
+  }
+  
+  @Test
+  void shouldRetrieveGBPPLNApiResponseAndThenPublishItAsCurrencyDetailsForexRespondedEvent() {
+    currencyDetailsScheduler.retrieveGBPPLNCurrencyDetails();
     List<Object> events = eventPublisher.getEvents();
     assertThat(events).hasSize(1);
   }
