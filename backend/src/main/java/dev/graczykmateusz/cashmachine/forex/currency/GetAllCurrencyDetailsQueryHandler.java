@@ -1,10 +1,10 @@
 package dev.graczykmateusz.cashmachine.forex.currency;
 
 import dev.graczykmateusz.cashmachine.abstraction.query.QueryHandler;
-import dev.graczykmateusz.cashmachine.api.query.GetAllCurrencyDetails;
 import dev.graczykmateusz.cashmachine.forex.constants.ExchangeSymbol;
 import dev.graczykmateusz.cashmachine.forex.currency.dto.AllCurrencyDetailsDto;
 import dev.graczykmateusz.cashmachine.forex.currency.dto.CurrencyDetailsDto;
+import dev.graczykmateusz.cashmachine.forex.currency.query.GetAllCurrencyDetails;
 import java.util.List;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;

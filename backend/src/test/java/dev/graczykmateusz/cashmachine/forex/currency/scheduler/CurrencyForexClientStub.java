@@ -5,6 +5,7 @@ import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyDetailsForexRespo
 import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyPriceForexResponseDto;
 import dev.graczykmateusz.cashmachine.forex.constants.ExchangeSymbol;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 import lombok.Getter;
 import reactor.core.publisher.Mono;
@@ -31,14 +32,13 @@ class CurrencyForexClientStub implements CurrencyForexClient {
   }
 
   @Override
-  public Mono<CurrencyDetailsForexResponseDto> retrieveCurrencyDetails(
+  public Mono<CurrencyDetailsForexResponseDto> retrieveCurrentCurrencyDetails(
       ExchangeSymbol exchangeSymbol) {
     return Mono.just(response);
   }
-
+  
   @Override
-  public Mono<CurrencyDetailsForexResponseDto> retrieveHistoricalDetails(
-      ExchangeSymbol exchangeSymbol) {
+  public Mono<CurrencyDetailsForexResponseDto> retrieveDailyCurrencyDetails(ExchangeSymbol exchangeSymbol) {
     return Mono.just(response);
   }
 }

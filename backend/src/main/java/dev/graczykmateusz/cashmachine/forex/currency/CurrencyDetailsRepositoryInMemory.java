@@ -12,4 +12,9 @@ class CurrencyDetailsRepositoryInMemory implements CurrencyDetailsRepository {
     data.add(entity);
     return entity;
   }
+  
+  @Override
+  public void deleteAll() {
+    data.clear();
+  }
 }

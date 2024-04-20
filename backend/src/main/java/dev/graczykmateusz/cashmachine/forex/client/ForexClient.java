@@ -12,21 +12,28 @@ class ForexClient implements CurrencyForexClient {
   private final WebClient webClient;
   private final PolygonUrlBuilder polygonUrlBuilder;
   private final PolygonApiSettings polygonApiSettings;
-  
+
   @Override
-  public Mono<CurrencyDetailsForexResponseDto> retrieveCurrencyDetails(ExchangeSymbol exchangeSymbol) {
-    String url = polygonUrlBuilder.build(exchangeSymbol);
-    return webClient
-        .get()
-        .uri(url)
-        .header("Authorization", "Bearer " + String.valueOf(polygonApiSettings.apiKey()))
-        .retrieve()
-        .bodyToMono(CurrencyDetailsForexResponse.class)
-        .map(CurrencyDetailsForexResponse::toDto);
+  public Mono<CurrencyDetailsForexResponseDto> retrieveCurrentCurrencyDetails(
+      ExchangeSymbol exchangeSymbol) {
+    String url = polygonUrlBuilder.buildCurrent(exchangeSymbol);
+    return retrieveCurrencyDetails(url);
+  }
+
+  @Override
+  public Mono<CurrencyDetailsForexResponseDto> retrieveDailyCurrencyDetails(
+      ExchangeSymbol exchangeSymbol) {
+    String url = polygonUrlBuilder.buildDaily(exchangeSymbol);
+    return retrieveCurrencyDetails(url);
   }
   
-  @Override
-  public Mono<CurrencyDetailsForexResponseDto> retrieveHistoricalDetails(ExchangeSymbol exchangeSymbol) {
-    return null;
+  private Mono<CurrencyDetailsForexResponseDto> retrieveCurrencyDetails(String url) {
+    return webClient
+            .get()
+            .uri(url)
+            .header("Authorization", "Bearer " + String.valueOf(polygonApiSettings.apiKey()))
+            .retrieve()
+            .bodyToMono(CurrencyDetailsForexResponse.class)
+            .map(CurrencyDetailsForexResponse::toDto);
   }
 }

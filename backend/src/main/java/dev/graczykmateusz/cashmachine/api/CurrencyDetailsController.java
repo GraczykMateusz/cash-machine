@@ -1,7 +1,7 @@
 package dev.graczykmateusz.cashmachine.api;
 
 import dev.graczykmateusz.cashmachine.abstraction.query.QueryHandlerExecutor;
-import dev.graczykmateusz.cashmachine.api.query.GetAllCurrencyDetails;
+import dev.graczykmateusz.cashmachine.forex.currency.query.GetAllCurrencyDetails;
 import dev.graczykmateusz.cashmachine.forex.currency.dto.AllCurrencyDetailsDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

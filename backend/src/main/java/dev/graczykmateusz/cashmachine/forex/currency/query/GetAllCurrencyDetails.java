@@ -1,4 +1,4 @@
-package dev.graczykmateusz.cashmachine.api.query;
+package dev.graczykmateusz.cashmachine.forex.currency.query;
 
 import dev.graczykmateusz.cashmachine.abstraction.query.Query;
 
