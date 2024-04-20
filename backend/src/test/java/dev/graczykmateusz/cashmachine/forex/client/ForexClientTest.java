@@ -1,7 +1,6 @@
 package dev.graczykmateusz.cashmachine.forex.client;
 
 import static dev.graczykmateusz.cashmachine.forex.constants.AvailableCurrencyPair.GBPPLN;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Clock;
 import java.time.Instant;

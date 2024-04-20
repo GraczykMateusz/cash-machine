@@ -1,9 +1,9 @@
 package dev.graczykmateusz.cashmachine.forex.currency;
 
 import dev.graczykmateusz.cashmachine.abstraction.event.DomainEventListener;
-import dev.graczykmateusz.cashmachine.abstraction.query.Query;
 import dev.graczykmateusz.cashmachine.abstraction.query.QueryHandler;
-import dev.graczykmateusz.cashmachine.abstraction.query.Result;
+import dev.graczykmateusz.cashmachine.api.query.GetAllCurrencyDetails;
+import dev.graczykmateusz.cashmachine.forex.currency.dto.AllCurrencyDetailsDto;
 import dev.graczykmateusz.cashmachine.forex.currency.scheduler.event.CurrencyDetailsForexResponded;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +22,7 @@ class CurrencyDetailsConfiguration {
   }
 
   @Bean
-  QueryHandler<Result, Query> currencyDetailsQueryHandler() {
-    return new CurrencyDetailsQueryHandler(currencyDetailsQueryRepository);
+  QueryHandler<AllCurrencyDetailsDto, GetAllCurrencyDetails> currencyDetailsQueryHandler() {
+    return new GetAllCurrencyDetailsQueryHandler(currencyDetailsQueryRepository);
   }
 }

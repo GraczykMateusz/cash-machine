@@ -7,7 +7,7 @@ public interface QueryHandler<R extends Result, Q extends Query> {
   default Class<Q> handlingCommandClass() {
     //noinspection unchecked
     return (Class<Q>)
-        ((ParameterizedType) this.getClass().getGenericInterfaces()[0]).getActualTypeArguments()[0];
+        ((ParameterizedType) this.getClass().getGenericInterfaces()[0]).getActualTypeArguments()[1];
   }
 
   R handle(Q query);
