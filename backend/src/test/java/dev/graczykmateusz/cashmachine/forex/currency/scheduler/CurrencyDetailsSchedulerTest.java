@@ -3,70 +3,58 @@ package dev.graczykmateusz.cashmachine.forex.currency.scheduler;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.graczykmateusz.cashmachine.event.ApplicationEventPublisherInMemory;
-import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyDetailsForexResponseDto;
-import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyPriceForexResponseDto;
+import dev.graczykmateusz.cashmachine.forex.constants.ExchangeSymbol;
 import dev.graczykmateusz.cashmachine.forex.currency.scheduler.event.CurrencyDetailsForexResponded;
-import java.math.BigDecimal;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class CurrencyDetailsSchedulerTest {
 
-  private final List<CurrencyPriceForexResponseDto> currencyPriceForexResponseDto =
-      List.of(
-          new CurrencyPriceForexResponseDto(
-              BigDecimal.valueOf(0),
-              BigDecimal.valueOf(1),
-              BigDecimal.valueOf(2),
-              BigDecimal.valueOf(3),
-              BigDecimal.valueOf(4),
-              BigDecimal.valueOf(5),
-              BigDecimal.valueOf(6),
-              BigDecimal.valueOf(7)));
-
-  private final CurrencyForexClientStub currencyForexClient =
-      new CurrencyForexClientStub("exchangeSymbol", currencyPriceForexResponseDto);
-
   private final ApplicationEventPublisherInMemory eventPublisher =
       new ApplicationEventPublisherInMemory();
 
-  private final CurrencyDetailsScheduler currencyDetailsScheduler =
-      new CurrencyDetailsSchedulerConfiguration(currencyForexClient, eventPublisher)
-          .currencyDetailsScheduler();
-
   @Test
   void shouldRetrieveEURPLNApiResponseAndThenPublishItAsCurrencyDetailsForexRespondedEvent() {
+    var currencyForexClientStub = new CurrencyForexClientStub(ExchangeSymbol.EURPLN);
+
+    var currencyDetailsScheduler =
+        new CurrencyDetailsSchedulerConfiguration(currencyForexClientStub, eventPublisher)
+            .currencyDetailsScheduler();
+
     currencyDetailsScheduler.retrieveEURPLNCurrencyDetails();
-    List<Object> events = eventPublisher.getEvents();
-    assertThat(events)
+
+    assertThat(eventPublisher.getEvents())
         .containsExactlyElementsOf(
-            List.of(
-                new CurrencyDetailsForexResponded(
-                    new CurrencyDetailsForexResponseDto(
-                        "exchangeSymbol", currencyPriceForexResponseDto))));
+            List.of(new CurrencyDetailsForexResponded(currencyForexClientStub.getResponse())));
   }
 
   @Test
   void shouldRetrieveUSDPLNApiResponseAndThenPublishItAsCurrencyDetailsForexRespondedEvent() {
+    var currencyForexClientStub = new CurrencyForexClientStub(ExchangeSymbol.USDPLN);
+
+    var currencyDetailsScheduler =
+        new CurrencyDetailsSchedulerConfiguration(currencyForexClientStub, eventPublisher)
+            .currencyDetailsScheduler();
+
     currencyDetailsScheduler.retrieveUSDPLNCurrencyDetails();
-    List<Object> events = eventPublisher.getEvents();
-    assertThat(events)
+
+    assertThat(eventPublisher.getEvents())
         .containsExactlyElementsOf(
-            List.of(
-                new CurrencyDetailsForexResponded(
-                    new CurrencyDetailsForexResponseDto(
-                        "exchangeSymbol", currencyPriceForexResponseDto))));
+            List.of(new CurrencyDetailsForexResponded(currencyForexClientStub.getResponse())));
   }
 
   @Test
   void shouldRetrieveGBPPLNApiResponseAndThenPublishItAsCurrencyDetailsForexRespondedEvent() {
+    var currencyForexClientStub = new CurrencyForexClientStub(ExchangeSymbol.GBPPLN);
+
+    var currencyDetailsScheduler =
+        new CurrencyDetailsSchedulerConfiguration(currencyForexClientStub, eventPublisher)
+            .currencyDetailsScheduler();
+
     currencyDetailsScheduler.retrieveGBPPLNCurrencyDetails();
-    List<Object> events = eventPublisher.getEvents();
-    assertThat(events)
+
+    assertThat(eventPublisher.getEvents())
         .containsExactlyElementsOf(
-            List.of(
-                new CurrencyDetailsForexResponded(
-                    new CurrencyDetailsForexResponseDto(
-                        "exchangeSymbol", currencyPriceForexResponseDto))));
+            List.of(new CurrencyDetailsForexResponded(currencyForexClientStub.getResponse())));
   }
 }

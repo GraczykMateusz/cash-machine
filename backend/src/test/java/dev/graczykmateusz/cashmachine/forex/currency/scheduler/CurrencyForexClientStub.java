@@ -4,25 +4,41 @@ import dev.graczykmateusz.cashmachine.forex.client.CurrencyForexClient;
 import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyDetailsForexResponseDto;
 import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyPriceForexResponseDto;
 import dev.graczykmateusz.cashmachine.forex.constants.ExchangeSymbol;
+import java.math.BigDecimal;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
 import reactor.core.publisher.Mono;
 
-@RequiredArgsConstructor
+@Getter
 class CurrencyForexClientStub implements CurrencyForexClient {
 
-  private final String exchangeSymbol;
-  private final List<CurrencyPriceForexResponseDto> currencyPrices;
+  private final CurrencyDetailsForexResponseDto response;
+
+  CurrencyForexClientStub(ExchangeSymbol exchangeSymbol) {
+    BigDecimal zero = BigDecimal.valueOf(0);
+    BigDecimal one = BigDecimal.valueOf(1);
+    BigDecimal two = BigDecimal.valueOf(2);
+    BigDecimal three = BigDecimal.valueOf(3);
+    BigDecimal four = BigDecimal.valueOf(4);
+    BigDecimal five = BigDecimal.valueOf(5);
+    BigDecimal six = BigDecimal.valueOf(6);
+    BigDecimal seven = BigDecimal.valueOf(7);
+
+    List<CurrencyPriceForexResponseDto> currencyPrices =
+        List.of(new CurrencyPriceForexResponseDto(zero, one, two, three, four, five, six, seven));
+
+    this.response = new CurrencyDetailsForexResponseDto(exchangeSymbol, currencyPrices);
+  }
 
   @Override
   public Mono<CurrencyDetailsForexResponseDto> retrieveCurrencyDetails(
       ExchangeSymbol exchangeSymbol) {
-    return Mono.just(new CurrencyDetailsForexResponseDto(this.exchangeSymbol, currencyPrices));
+    return Mono.just(response);
   }
 
   @Override
   public Mono<CurrencyDetailsForexResponseDto> retrieveHistoricalDetails(
       ExchangeSymbol exchangeSymbol) {
-    return Mono.just(new CurrencyDetailsForexResponseDto(this.exchangeSymbol, currencyPrices));
+    return Mono.just(response);
   }
 }
