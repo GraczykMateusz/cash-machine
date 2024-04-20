@@ -6,22 +6,21 @@ import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyPriceForexRespons
 import java.util.List;
 import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 class CurrencyDetailsForexResponse {
 
   @JsonProperty("ticker")
-  String exchangeSymbol;
-  
+  private ExchangeSymbolForexResponse exchangeSymbol;
+
   @JsonProperty("results")
-  List<CurrencyPriceForexResponse> currencyPrice;
+  private List<CurrencyPriceForexResponse> currencyPrice;
 
   CurrencyDetailsForexResponseDto toDto() {
     List<CurrencyPriceForexResponseDto> currencyPriceForexResponses =
         currencyPrice.stream().map(CurrencyPriceForexResponse::toDto).toList();
-    return new CurrencyDetailsForexResponseDto(exchangeSymbol, currencyPriceForexResponses);
+    return new CurrencyDetailsForexResponseDto(
+        exchangeSymbol.toConst(), currencyPriceForexResponses);
   }
 }

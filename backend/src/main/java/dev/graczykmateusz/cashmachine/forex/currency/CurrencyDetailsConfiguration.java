@@ -5,24 +5,29 @@ import dev.graczykmateusz.cashmachine.abstraction.query.QueryHandler;
 import dev.graczykmateusz.cashmachine.api.query.GetAllCurrencyDetails;
 import dev.graczykmateusz.cashmachine.forex.currency.dto.AllCurrencyDetailsDto;
 import dev.graczykmateusz.cashmachine.forex.currency.scheduler.event.CurrencyDetailsForexResponded;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration(proxyBeanMethods = false)
-@RequiredArgsConstructor
 class CurrencyDetailsConfiguration {
 
-  private final CurrencyDetailsRepository currencyDetailsRepository;
-  private final CurrencyDetailsQueryRepository currencyDetailsQueryRepository;
+  private final CurrencyDetailsRepository repository;
+  private final CurrencyDetailsQueryRepository queryRepository;
+
+  CurrencyDetailsConfiguration(
+      CurrencyDetailsRepository repository, CurrencyDetailsQueryRepository queryRepository) {
+    this.repository = repository;
+    this.queryRepository = queryRepository;
+  }
 
   @Bean
   DomainEventListener<CurrencyDetailsForexResponded> currencyDetailsApiRespondedListener() {
-    return new CurrencyDetailsApiRespondedListener(currencyDetailsRepository);
+    return new CurrencyDetailsApiRespondedListener(repository);
   }
 
   @Bean
   QueryHandler<AllCurrencyDetailsDto, GetAllCurrencyDetails> currencyDetailsQueryHandler() {
-    return new GetAllCurrencyDetailsQueryHandler(currencyDetailsQueryRepository);
+    var grouper = new CurrencyDetailsGrouper();
+    return new GetAllCurrencyDetailsQueryHandler(grouper, queryRepository);
   }
 }

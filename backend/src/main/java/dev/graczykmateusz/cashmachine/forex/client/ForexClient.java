@@ -1,7 +1,7 @@
 package dev.graczykmateusz.cashmachine.forex.client;
 
 import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyDetailsForexResponseDto;
-import dev.graczykmateusz.cashmachine.forex.constants.AvailableCurrencyPair;
+import dev.graczykmateusz.cashmachine.forex.constants.ExchangeSymbol;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -14,8 +14,8 @@ class ForexClient implements CurrencyForexClient {
   private final PolygonApiSettings polygonApiSettings;
   
   @Override
-  public Mono<CurrencyDetailsForexResponseDto> retrieveCurrencyDetails(AvailableCurrencyPair availableCurrencyPair) {
-    String url = polygonUrlBuilder.build(availableCurrencyPair);
+  public Mono<CurrencyDetailsForexResponseDto> retrieveCurrencyDetails(ExchangeSymbol exchangeSymbol) {
+    String url = polygonUrlBuilder.build(exchangeSymbol);
     return webClient
         .get()
         .uri(url)
@@ -26,7 +26,7 @@ class ForexClient implements CurrencyForexClient {
   }
   
   @Override
-  public Mono<CurrencyDetailsForexResponseDto> retrieveHistoricalDetails(AvailableCurrencyPair availableCurrencyPair) {
+  public Mono<CurrencyDetailsForexResponseDto> retrieveHistoricalDetails(ExchangeSymbol exchangeSymbol) {
     return null;
   }
 }

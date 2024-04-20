@@ -1,6 +1,6 @@
 package dev.graczykmateusz.cashmachine.forex.client;
 
-import dev.graczykmateusz.cashmachine.forex.constants.AvailableCurrencyPair;
+import dev.graczykmateusz.cashmachine.forex.constants.ExchangeSymbol;
 
 import lombok.RequiredArgsConstructor;
 
@@ -9,9 +9,9 @@ class PolygonUrlBuilder {
 
   private final ForexClock forexClock;
 
-  String build(AvailableCurrencyPair availableCurrencyPair) {
+  String build(ExchangeSymbol exchangeSymbol) {
     return "https://api.polygon.io/v2/aggs/ticker/C:"
-        + availableCurrencyPair
+        + exchangeSymbol
         + "/range/1/minute/"
         + forexClock.getFrom()
         + "/"

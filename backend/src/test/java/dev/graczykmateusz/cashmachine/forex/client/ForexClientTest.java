@@ -1,6 +1,6 @@
 package dev.graczykmateusz.cashmachine.forex.client;
 
-import static dev.graczykmateusz.cashmachine.forex.constants.AvailableCurrencyPair.GBPPLN;
+import static dev.graczykmateusz.cashmachine.forex.constants.ExchangeSymbol.GBPPLN;
 
 import java.time.Clock;
 import java.time.Instant;

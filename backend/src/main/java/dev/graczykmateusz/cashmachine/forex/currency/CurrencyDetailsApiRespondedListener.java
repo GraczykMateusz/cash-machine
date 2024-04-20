@@ -10,14 +10,14 @@ import org.springframework.scheduling.annotation.Async;
 class CurrencyDetailsApiRespondedListener
     implements DomainEventListener<CurrencyDetailsForexResponded> {
 
-  private final CurrencyDetailsRepository currencyDetailsRepository;
+  private final CurrencyDetailsRepository repository;
 
   @Async
   @EventListener
   @Override
   public void listen(CurrencyDetailsForexResponded event) {
     var eventData = event.currencyDetailsForexResponseDto();
-    var currencyDetails = CurrencyDetails.toDomain(eventData);
-    currencyDetailsRepository.save(currencyDetails);
+    var currencyDetails = CurrencyDetailsMapper.fromDto(eventData);
+    repository.save(currencyDetails);
   }
 }

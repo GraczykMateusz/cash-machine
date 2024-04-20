@@ -1,10 +1,10 @@
 package dev.graczykmateusz.cashmachine.forex.currency.scheduler;
 
-import static dev.graczykmateusz.cashmachine.forex.constants.AvailableCurrencyPair.*;
+import static dev.graczykmateusz.cashmachine.forex.constants.ExchangeSymbol.*;
 
 import dev.graczykmateusz.cashmachine.abstraction.event.DomainEventPublisher;
 import dev.graczykmateusz.cashmachine.forex.client.CurrencyForexClient;
-import dev.graczykmateusz.cashmachine.forex.constants.AvailableCurrencyPair;
+import dev.graczykmateusz.cashmachine.forex.constants.ExchangeSymbol;
 import dev.graczykmateusz.cashmachine.forex.currency.scheduler.event.CurrencyDetailsForexResponded;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,9 +32,9 @@ class CurrencyDetailsScheduler {
     retrieveCurrencyDetails(GBPPLN);
   }
 
-  private void retrieveCurrencyDetails(AvailableCurrencyPair availableCurrencyPair) {
+  private void retrieveCurrencyDetails(ExchangeSymbol exchangeSymbol) {
     var currencyDetailsApiResponse =
-        currencyForexClient.retrieveCurrencyDetails(availableCurrencyPair);
+        currencyForexClient.retrieveCurrencyDetails(exchangeSymbol);
     
     currencyDetailsApiResponse.subscribe(
         currencyDetailsForexResponseDto ->

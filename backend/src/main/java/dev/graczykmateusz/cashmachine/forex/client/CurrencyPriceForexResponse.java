@@ -1,15 +1,12 @@
 package dev.graczykmateusz.cashmachine.forex.client;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.math.BigDecimal;
-
 import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyPriceForexResponseDto;
+import java.math.BigDecimal;
 import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 class CurrencyPriceForexResponse {
 

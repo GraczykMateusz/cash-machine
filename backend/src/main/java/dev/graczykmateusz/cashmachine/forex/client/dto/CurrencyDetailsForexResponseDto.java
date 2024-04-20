@@ -1,6 +1,8 @@
 package dev.graczykmateusz.cashmachine.forex.client.dto;
 
+import dev.graczykmateusz.cashmachine.forex.constants.ExchangeSymbol;
+
 import java.util.List;
 
 public record CurrencyDetailsForexResponseDto(
-    String exchangeSymbol, List<CurrencyPriceForexResponseDto> currencyPrices) {}
+        ExchangeSymbol exchangeSymbol, List<CurrencyPriceForexResponseDto> currencyPrices) {}
