@@ -1,6 +1,13 @@
 <ul ngbNav #nav="ngbNav" class="nav-tabs pt-2 mb-3">
     <li ngbNavItem>
         <button ngbNavLink class="d-flex flex-column align-items-center">
+            <i class="fa-solid fa-money-bill-trend-up fa-2x"></i>
+            Forex
+        </button>
+        <ng-template ngbNavContent><app-forex></app-forex></ng-template>
+    </li>
+    <li ngbNavItem>
+        <button ngbNavLink class="d-flex flex-column align-items-center">
             <i class="fa-solid fa-landmark fa-2x"></i>
             Account
         </button>

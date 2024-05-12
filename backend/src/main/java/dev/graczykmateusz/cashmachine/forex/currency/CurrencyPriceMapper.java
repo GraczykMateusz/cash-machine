@@ -2,6 +2,9 @@ package dev.graczykmateusz.cashmachine.forex.currency;
 
 import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyPriceForexResponseDto;
 import dev.graczykmateusz.cashmachine.forex.currency.dto.CurrencyPriceDto;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -15,7 +18,8 @@ class CurrencyPriceMapper {
         currencyPrice.getLowestPrice(),
         currencyPrice.getNumberOfTransactions(),
         currencyPrice.getOpenPrice(),
-        currencyPrice.getTimestamp(),
+        LocalDateTime.ofInstant(
+            Instant.ofEpochMilli(currencyPrice.getTimestamp().longValue()), ZoneId.systemDefault()),
         currencyPrice.getTradingVolume(),
         currencyPrice.getVolumeWeightedAveragePrice());
   }

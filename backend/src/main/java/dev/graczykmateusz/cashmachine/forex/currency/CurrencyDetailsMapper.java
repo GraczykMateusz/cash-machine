@@ -4,12 +4,11 @@ import dev.graczykmateusz.cashmachine.forex.client.dto.CurrencyDetailsForexRespo
 import dev.graczykmateusz.cashmachine.forex.constants.ExchangeSymbol;
 import dev.graczykmateusz.cashmachine.forex.currency.dto.CurrencyDetailsDto;
 import dev.graczykmateusz.cashmachine.forex.currency.dto.CurrencyPriceDto;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 class CurrencyDetailsMapper {
@@ -40,10 +39,11 @@ class CurrencyDetailsMapper {
     return new CurrencyDetailsDto(exchangeSymbol, currencyPrices);
   }
 
-  private static List<CurrencyPriceDto> extractCurrencyPrices(List<CurrencyDetails> currencyDetailsList) {
+  private static List<CurrencyPriceDto> extractCurrencyPrices(
+      List<CurrencyDetails> currencyDetailsList) {
     return currencyDetailsList.stream()
         .flatMap(currencyDetails -> currencyDetails.getCurrencyPrices().stream())
-        .sorted(Comparator.comparing(CurrencyPrice::getTimestamp).reversed())
+        .sorted(Comparator.comparing(CurrencyPrice::getTimestamp))
         .map(CurrencyPriceMapper::toDto)
         .toList();
   }

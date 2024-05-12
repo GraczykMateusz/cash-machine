@@ -4,7 +4,9 @@ import dev.graczykmateusz.cashmachine.abstraction.command.CommandHandler;
 import dev.graczykmateusz.cashmachine.forex.client.CurrencyForexClient;
 import dev.graczykmateusz.cashmachine.forex.currency.command.UpdateDailyCurrencyDetails;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequiredArgsConstructor
 class UpdateDailyCurrencyDetailsCommandHandler
     implements CommandHandler<UpdateDailyCurrencyDetails> {

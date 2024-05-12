@@ -1,7 +1,10 @@
-import { computed, inject, Injectable, Signal } from '@angular/core';
+import { computed, effect, inject, Injectable, signal, Signal, WritableSignal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { CurrencyDetailsList } from '../currency-details-list';
+import { CurrencyDetails } from '../detail/currency-details';
+import { ChartService } from '../chart/chart.service';
+import { first } from 'rxjs';
+import { ApiBuilder } from '../../../shared/api-builder/api.builder';
+import { ChartType } from '../../ui/chart-type-switch-button/data/chart-type';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +12,26 @@ import { CurrencyDetailsList } from '../currency-details-list';
 export class ForexClientService {
   
   private readonly http: HttpClient = inject(HttpClient);
+  private readonly chartService: ChartService = inject(ChartService);
   
-  private _currencyDetails: Signal<CurrencyDetailsList | null> = toSignal(this.http.get<CurrencyDetailsList>('/api/v1/forex/currency-details/all'), {initialValue: null});
+  private readonly _currencyDetails: WritableSignal<CurrencyDetails | undefined> = signal(undefined);
   
-  get currencyDetails(): Signal<CurrencyDetailsList | null> {
+  get currencyDetails(): Signal<CurrencyDetails | undefined> {
     return computed(() => this._currencyDetails());
   }
+  
+  constructor() {
+    effect((): void => {
+      this.refreshCurrencyDetails();
+    });
+  }
+  
+  public refreshCurrencyDetails(): void {
+    const chartType: ChartType = this.chartService.chartType();
+    const url: string = ApiBuilder.api.v1.forex.currencyDetails.chartType(chartType).build();
+    this.http.get<CurrencyDetails>(url)
+      .pipe(first())
+      .subscribe((value: CurrencyDetails) => this._currencyDetails.set(value));
+  }
 }
+

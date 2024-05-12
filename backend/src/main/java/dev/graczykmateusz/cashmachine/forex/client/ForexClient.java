@@ -26,14 +26,14 @@ class ForexClient implements CurrencyForexClient {
     String url = polygonUrlBuilder.buildDaily(exchangeSymbol);
     return retrieveCurrencyDetails(url);
   }
-  
+
   private Mono<CurrencyDetailsForexResponseDto> retrieveCurrencyDetails(String url) {
     return webClient
-            .get()
-            .uri(url)
-            .header("Authorization", "Bearer " + String.valueOf(polygonApiSettings.apiKey()))
-            .retrieve()
-            .bodyToMono(CurrencyDetailsForexResponse.class)
-            .map(CurrencyDetailsForexResponse::toDto);
+        .get()
+        .uri(url)
+        .header("Authorization", "Bearer " + String.valueOf(polygonApiSettings.apiKey()))
+        .retrieve()
+        .bodyToMono(CurrencyDetailsForexResponse.class)
+        .map(CurrencyDetailsForexResponseMapper::toDto);
   }
 }

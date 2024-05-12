@@ -4,6 +4,7 @@ import static dev.graczykmateusz.cashmachine.forex.constants.ExchangeSymbol.*;
 
 import dev.graczykmateusz.cashmachine.abstraction.event.DomainEventPublisher;
 import dev.graczykmateusz.cashmachine.forex.client.CurrencyForexClient;
+import dev.graczykmateusz.cashmachine.forex.client.exception.EmptyCurrencyPriceListException;
 import dev.graczykmateusz.cashmachine.forex.constants.ExchangeSymbol;
 import dev.graczykmateusz.cashmachine.forex.currency.scheduler.event.DailyCurrencyDetailsForexResponded;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @RequiredArgsConstructor
 class CurrencyDailyDetailsScheduler {
 
+  private final ForexApiErrorConsumer errorConsumer;
   private final CurrencyForexClient currencyForexClient;
   private final DomainEventPublisher<DailyCurrencyDetailsForexResponded> publisher;
 
@@ -34,9 +36,11 @@ class CurrencyDailyDetailsScheduler {
     var currencyDetailsApiResponse =
         currencyForexClient.retrieveDailyCurrencyDetails(exchangeSymbol);
 
-    currencyDetailsApiResponse.subscribe(
-        currencyDetailsForexResponseDto ->
-            publisher.publish(
-                new DailyCurrencyDetailsForexResponded(currencyDetailsForexResponseDto)));
+    currencyDetailsApiResponse
+        .doOnError(errorConsumer)
+        .subscribe(
+            currencyDetailsForexResponseDto ->
+                publisher.publish(
+                    new DailyCurrencyDetailsForexResponded(currencyDetailsForexResponseDto)));
   }
 }

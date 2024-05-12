@@ -4,7 +4,7 @@ export type CurrencyPrice = {
   lowestPrice: number,
   numberOfTransactions: number,
   openPrice: number,
-  timestamp: number,
+  timestamp: string,
   tradingVolume: number,
   volumeWeightedAveragePrice: number
 }

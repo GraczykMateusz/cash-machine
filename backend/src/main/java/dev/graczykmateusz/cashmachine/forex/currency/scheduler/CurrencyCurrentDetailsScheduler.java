@@ -15,17 +15,18 @@ import org.springframework.scheduling.annotation.Scheduled;
 @RequiredArgsConstructor
 class CurrencyCurrentDetailsScheduler {
 
+  private final ForexApiErrorConsumer errorConsumer;
   private final CurrencyForexClient currencyForexClient;
   private final DomainEventPublisher<CurrentCurrencyDetailsForexResponded> publisher;
 
   @Async
-  @Scheduled(cron = "0 * * ? * *")
+  @Scheduled(cron = "0 * * * * *")
   public void retrieveCurrentEURPLNCurrencyDetails() {
     retrieveCurrentCurrencyDetails(EURPLN);
   }
 
   @Async
-  @Scheduled(cron = "0 * * ? * *")
+  @Scheduled(cron = "0 * * * * *")
   public void retrieveCurrentUSDPLNCurrencyDetails() {
     retrieveCurrentCurrencyDetails(USDPLN);
   }
@@ -34,9 +35,11 @@ class CurrencyCurrentDetailsScheduler {
     var currencyDetailsApiResponse =
         currencyForexClient.retrieveCurrentCurrencyDetails(exchangeSymbol);
 
-    currencyDetailsApiResponse.subscribe(
-        currencyDetailsForexResponseDto ->
-            publisher.publish(
-                new CurrentCurrencyDetailsForexResponded(currencyDetailsForexResponseDto)));
+    currencyDetailsApiResponse
+        .doOnError(errorConsumer)
+        .subscribe(
+            currencyDetailsForexResponseDto ->
+                publisher.publish(
+                    new CurrentCurrencyDetailsForexResponded(currencyDetailsForexResponseDto)));
   }
 }

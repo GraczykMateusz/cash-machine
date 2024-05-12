@@ -1,6 +1,7 @@
 package dev.graczykmateusz.cashmachine.forex.currency.dto;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public record CurrencyPriceDto(
     BigDecimal closePrice,
@@ -8,6 +9,6 @@ public record CurrencyPriceDto(
     BigDecimal lowestPrice,
     BigDecimal numberOfTransactions,
     BigDecimal openPrice,
-    BigDecimal timestamp,
+    LocalDateTime timestamp,
     BigDecimal tradingVolume,
     BigDecimal volumeWeightedAveragePrice) {}

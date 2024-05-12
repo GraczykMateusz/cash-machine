@@ -7,7 +7,9 @@ import dev.graczykmateusz.cashmachine.forex.client.CurrencyForexClient;
 import dev.graczykmateusz.cashmachine.forex.currency.command.RemoveAllCurrencyDetails;
 import dev.graczykmateusz.cashmachine.forex.currency.command.UpdateDailyCurrencyDetails;
 import dev.graczykmateusz.cashmachine.forex.currency.dto.AllCurrencyDetailsDto;
+import dev.graczykmateusz.cashmachine.forex.currency.dto.CurrencyDetailsDto;
 import dev.graczykmateusz.cashmachine.forex.currency.query.GetAllCurrencyDetails;
+import dev.graczykmateusz.cashmachine.forex.currency.query.GetCurrencyDetails;
 import dev.graczykmateusz.cashmachine.forex.currency.scheduler.event.CurrentCurrencyDetailsForexResponded;
 import dev.graczykmateusz.cashmachine.forex.currency.scheduler.event.DailyCurrencyDetailsForexResponded;
 import org.springframework.context.annotation.Bean;
@@ -41,9 +43,16 @@ class CurrencyDetailsConfiguration {
   }
 
   @Bean
-  QueryHandler<AllCurrencyDetailsDto, GetAllCurrencyDetails> currencyDetailsQueryHandler(
+  QueryHandler<AllCurrencyDetailsDto, GetAllCurrencyDetails> getAllCurrencyDetailsQueryHandler(
       CurrencyDetailsQueryRepository queryRepository) {
-    var grouper = new CurrencyDetailsGrouper();
+    var grouper = new CurrencyDetailsGrouper(); // todo should be singleton
     return new GetAllCurrencyDetailsQueryHandler(grouper, queryRepository);
+  }
+  
+  @Bean
+  QueryHandler<CurrencyDetailsDto, GetCurrencyDetails> getCurrencyDetailsQueryHandler(
+          CurrencyDetailsQueryRepository queryRepository) {
+    var grouper = new CurrencyDetailsGrouper(); // todo should be singleton
+    return new GetCurrencyDetailsQueryHandler(grouper, queryRepository);
   }
 }

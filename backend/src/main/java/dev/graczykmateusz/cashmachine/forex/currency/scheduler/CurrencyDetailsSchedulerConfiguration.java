@@ -8,12 +8,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 class CurrencyDetailsSchedulerConfiguration {
 
+  private final ForexApiErrorConsumer errorConsumer = new ForexApiErrorConsumer();
+
   @Bean
   CurrencyCurrentDetailsScheduler currencyDetailsScheduler(
       CurrencyForexClient currencyForexClient,
       ApplicationEventPublisher applicationEventPublisher) {
     var eventPublisher = new CurrencyCurrentDetailsApiRespondedPublisher(applicationEventPublisher);
-    return new CurrencyCurrentDetailsScheduler(currencyForexClient, eventPublisher);
+    return new CurrencyCurrentDetailsScheduler(errorConsumer, currencyForexClient, eventPublisher);
   }
 
   @Bean
@@ -21,6 +23,6 @@ class CurrencyDetailsSchedulerConfiguration {
       CurrencyForexClient currencyForexClient,
       ApplicationEventPublisher applicationEventPublisher) {
     var eventPublisher = new CurrencyDailyDetailsApiRespondedPublisher(applicationEventPublisher);
-    return new CurrencyDailyDetailsScheduler(currencyForexClient, eventPublisher);
+    return new CurrencyDailyDetailsScheduler(errorConsumer, currencyForexClient, eventPublisher);
   }
 }
