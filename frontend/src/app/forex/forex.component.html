@@ -1,11 +1,11 @@
 @if (currencyDetails()) {
     <div class="d-flex gap-2">
         <app-chart-type-switch-button class="w-100"></app-chart-type-switch-button>
-        <app-chart-filter-switch-button class="w-100" buttonName="Last 10m"></app-chart-filter-switch-button>
-        <app-chart-filter-switch-button class="w-100" buttonName="Today"></app-chart-filter-switch-button>
-        <app-chart-filter-switch-button class="w-100" buttonName="Last 24h"></app-chart-filter-switch-button>
+        <app-chart-filter-switch-button class="w-100" filterType="LAST_10M" buttonName="Last 10m"></app-chart-filter-switch-button>
+        <app-chart-filter-switch-button class="w-100" filterType="TODAY" buttonName="Today"></app-chart-filter-switch-button>
+        <app-chart-filter-switch-button class="w-100" filterType="LAST_24H" buttonName="Last 24h"></app-chart-filter-switch-button>
     </div>
-    <div [ngClass]="{'blur': currencyDetails()?.exchangeSymbol != chartType()}">
+    <div [class.blur]="currencyDetails()?.exchangeSymbol != chartType()">
         <canvas id="chart" class="chart">{{ currencyChart() }}</canvas>
     </div>
 } @else {

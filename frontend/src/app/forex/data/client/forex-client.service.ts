@@ -26,7 +26,7 @@ export class ForexClientService {
     });
   }
   
-  public refreshCurrencyDetails(): void {
+  refreshCurrencyDetails(): void {
     const chartType: ChartType = this.chartService.chartType();
     const url: string = ApiBuilder.api.v1.forex.currencyDetails.chartType(chartType).build();
     this.http.get<CurrencyDetails>(url)

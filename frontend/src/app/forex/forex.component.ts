@@ -34,23 +34,10 @@ export class ForexComponent {
   private readonly forexClientService: ForexClientService = inject(ForexClientService);
   private readonly chartService: ChartService = inject(ChartService);
   
-  private readonly _currencyDetails: Signal<CurrencyDetails | undefined> = this.forexClientService.currencyDetails;
-  
-  protected readonly chartType: Signal<ChartType> = this.chartService.chartType;
-  
-  protected readonly currencyChart = computed(() => {
-    if (this._currencyDetails()?.currencyPrices) {
-      let chartStatus = Chart.getChart('chart');
-      if (chartStatus != undefined) {
-        chartStatus.destroy();
-      }
-      return this.chartService.create(this._currencyDetails()!.currencyPrices);
-    } else {
-      return undefined;
-    }
-  })
-  
-  get currencyDetails(): Signal<CurrencyDetails | undefined> {
-    return computed(() => this._currencyDetails());
-  }
+  readonly currencyDetails: Signal<CurrencyDetails | undefined> =
+    computed(() => this.forexClientService.currencyDetails());
+  readonly chartType: Signal<ChartType> =
+    computed(() => this.chartService.chartType());
+  readonly currencyChart: Signal<Chart<any> | undefined> =
+    computed(() => this.chartService.createChart(this.currencyDetails()?.currencyPrices));
 }

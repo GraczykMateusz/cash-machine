@@ -12,9 +12,9 @@ import { ChartService } from '../../data/chart/chart.service';
 export class ChartTypeSwitchButtonComponent {
   
   private readonly chartService: ChartService = inject(ChartService);
-  protected readonly chartType: Signal<ChartType> = computed(() => this.chartService.chartType());
+  readonly chartType: Signal<ChartType> = computed(() => this.chartService.chartType());
   
-  protected readonly changeChartType = () => {
+  changeChartType(): void {
     this.chartService.updateChartType((this.chartType() == 'EURPLN' ? 'USDPLN' : 'EURPLN'));
   };
 }
