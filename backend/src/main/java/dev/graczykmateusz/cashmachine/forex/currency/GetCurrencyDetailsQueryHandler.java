@@ -29,7 +29,7 @@ class GetCurrencyDetailsQueryHandler
                 currencyDetailsDto ->
                     currencyDetailsDto.exchangeSymbol().equals(query.getExchangeSymbol()))
             .findFirst()
-            .get();
+            .get(); // todo
 
     return currencyDetailsDtos;
   }
