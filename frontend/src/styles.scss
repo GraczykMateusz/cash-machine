@@ -12,6 +12,7 @@
   --my-white: #e8edeb;
   --my-light-blue: #00659b;
   --my-blue: #0057da;
+  --my-blue-2: #003eda;
   --my-dark-blue: #001821;
   --my-pink: #bb18fc;
   --my-dark-red: #a10000;
@@ -19,8 +20,11 @@
 
 html, body {
   background: linear-gradient(90deg, var(--my-dark-blue) 30%, var(--my-light-blue) 100%);
-  color: var(--my-white);
   font-family: "Trebuchet MS", serif;
+}
+
+.blue-button .btn:hover {
+  background-color: var(--my-blue-2);
 }
 
 .cursor-pointer {

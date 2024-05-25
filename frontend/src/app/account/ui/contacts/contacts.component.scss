@@ -1,0 +1,11 @@
+.modal-content {
+  color: var(--my-white);
+  border: 1px var(--my-white) solid;
+  background: linear-gradient(90deg, var(--my-dark-blue) 30%, var(--my-light-blue) 100%);
+  font-family: "Trebuchet MS", serif;
+}
+
+.modal-body {
+  max-height: 60vh;
+  overflow-y: auto;
+}

@@ -13,10 +13,10 @@ class UserContact {
 
   @Id private String id;
   private String userId;
-  private int accountNumber;
+  private String accountNumber;
   private String assignedName;
 
-  UserContact(String userId, int accountNumber, String assignedName) {
+  UserContact(String userId, String accountNumber, String assignedName) {
     this.userId = userId;
     this.accountNumber = accountNumber;
     this.assignedName = assignedName;

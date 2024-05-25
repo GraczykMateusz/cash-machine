@@ -13,6 +13,14 @@ export class ApiBuilder {
     return this.append('v1');
   }
   
+  account(accountId: string) {
+    return this.append(`account`).append(accountId);
+  }
+  
+  get contacts() {
+    return this.append('contacts');
+  }
+  
   get forex() {
     return this.append('forex');
   }

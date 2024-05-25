@@ -1,10 +1,35 @@
-<div class="modal-header">
-    <h4 class="modal-title">Contacts</h4>
-</div>
-<div class="modal-body">
-    trolololo
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
-    <button type="button" class="btn btn-primary" (click)="confirm()">Select</button>
+<div class="modal-content">
+    <div class="modal-header">
+        <div class="w-100" ngbAccordion>
+            <div class="w-100" ngbAccordionItem>
+                <div ngbAccordionHeader class="modal-title d-flex justify-content-between w-100">
+                    <h4>Contacts</h4>
+                    <button ngbAccordionButton>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <div ngbAccordionCollapse>
+                    <div ngbAccordionBody>
+                        <ng-template>Content for the first item</ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-body">
+        @if (allUserContacts()) {
+            @for (userContact of allUserContacts()?.contacts; track allUserContacts()) {
+                <button type="button" class="btn btn-primary w-100 mb-2" (click)="select(userContact)">
+                    <p class="m-0">{{ userContact.accountNumber }}</p>
+                    <p class="m-0">{{ userContact.assignedName }}</p>
+                </button>
+            }
+        } @else {
+            <app-loading-spinner/>
+        }
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    </div>
 </div>
