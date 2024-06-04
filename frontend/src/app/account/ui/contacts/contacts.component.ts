@@ -54,4 +54,8 @@ export class ContactsComponent {
   clearFilter(): void {
     this.filterValue.set('');
   }
+  
+  addNewContact() {
+  
+  }
 }
