@@ -1,5 +1,5 @@
 import { Component, inject, Signal } from '@angular/core';
-import { NgbAccordionBody, NgbAccordionButton, NgbAccordionCollapse, NgbAccordionDirective, NgbAccordionHeader, NgbAccordionItem, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionBody, NgbAccordionButton, NgbAccordionCollapse, NgbAccordionDirective, NgbAccordionHeader, NgbAccordionItem, NgbAccordionToggle, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserContactsService } from './data/user-contacts.service';
 import { AllUserContacts } from './data/all-user-contacts';
 import { LoadingSpinnerComponent } from '../../../common/loading-spinner/loading-spinner.component';
@@ -15,7 +15,8 @@ import { UserContact } from './data/user-contact';
     NgbAccordionHeader,
     NgbAccordionButton,
     NgbAccordionCollapse,
-    NgbAccordionBody
+    NgbAccordionBody,
+    NgbAccordionToggle
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'
