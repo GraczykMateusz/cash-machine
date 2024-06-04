@@ -3,26 +3,19 @@
         <div class="w-100" ngbAccordion #accordion="ngbAccordion">
             <div ngbAccordionItem="search" #search="ngbAccordionItem" class="bg-transparent">
                 <div ngbAccordionHeader>
-                    <div ngbAccordionToggle
+                    <div ngbAccordionToggle (click)="clearFilter()"
                          class="d-flex justify-content-between align-items-center pt-1 px-2 cursor-pointer">
                         <h2>Contacts</h2>
-                        <input type="checkbox" id="checkbox2" class="checkbox2 visually-hidden"
-                               [checked]="!search.collapsed" (change)="accordion.toggle('search')">
-                        <label for="checkbox2">
-                            <div class="hamburger hamburger2">
-                                <span class="bar bar1"></span>
-                                <span class="bar bar2"></span>
-                                <span class="bar bar3"></span>
-                                <span class="bar bar4"></span>
-                            </div>
-                        </label>
+                        <app-hamburger [checked]="!search.collapsed"
+                                       (onHamburgerChange)="accordion.toggle('search'); clearFilter()">
+                        </app-hamburger>
                     </div>
                 </div>
                 <div ngbAccordionCollapse>
                     <div ngbAccordionBody class="px-2">
                         <ng-template>
-                            <input type="search" class="form-control" id="exampleInputPassword1"
-                                   placeholder="Search...">
+                            <input type="search" class="form-control" placeholder="Search..."
+                                   [value]="filterValue()" (input)="filter($event)">
                         </ng-template>
                     </div>
                 </div>
@@ -32,11 +25,14 @@
     </div>
     <div class="modal-body">
         @if (allUserContacts()) {
-            @for (userContact of allUserContacts()?.contacts; track allUserContacts()) {
+            @for (userContact of userContacts(); track userContacts()) {
                 <button type="button" class="btn btn-primary w-100 mb-2" (click)="select(userContact)">
                     <p class="m-0">{{ userContact.accountNumber }}</p>
                     <p class="m-0">{{ userContact.assignedName }}</p>
                 </button>
+            }
+            @if (userContacts()?.length == 0) {
+                <h4 class="d-flex justify-content-center">Nothing here...</h4>
             }
         } @else {
             <app-loading-spinner/>
