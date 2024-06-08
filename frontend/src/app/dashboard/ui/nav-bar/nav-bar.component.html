@@ -29,5 +29,12 @@
         </button>
         <ng-template ngbNavContent><app-history></app-history></ng-template>
     </li>
+    <li ngbNavItem>
+        <button ngbNavLink class="d-flex flex-column align-items-center">
+            <i class="fa-solid fa-list fa-2x"></i>
+            Contacts
+        </button>
+        <ng-template ngbNavContent><app-contacts></app-contacts></ng-template>
+    </li>
 </ul>
 <div [ngbNavOutlet]="nav"></div>

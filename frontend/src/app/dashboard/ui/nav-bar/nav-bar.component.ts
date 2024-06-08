@@ -4,6 +4,7 @@ import { NgbNav, NgbNavContent, NgbNavItem, NgbNavItemRole, NgbNavLinkBase, NgbN
 import { HistoryComponent } from '../../../history/history.component';
 import { ForexComponent } from '../../../forex/forex.component';
 import { SavingsComponent } from '../../../savings/savings.component';
+import { ContactsComponent } from '../../../contacts/contacts.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -19,7 +20,8 @@ import { SavingsComponent } from '../../../savings/savings.component';
     NgbNavOutlet,
     HistoryComponent,
     ForexComponent,
-    SavingsComponent
+    SavingsComponent,
+    ContactsComponent
   ],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss'

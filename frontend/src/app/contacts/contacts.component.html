@@ -1,0 +1,38 @@
+<div class="max-height">
+
+    @if (allUserContacts()) {
+        @for (userContact of userContacts(); track userContacts()) {
+            <div class="btn btn-primary w-100 mb-2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-10 m-0">
+                            {{ userContact.accountNumber }}
+                        </div>
+                        <div class="col-2">
+                            <i class="fa-solid fa-pen-to-square"
+                               (mouseenter)="onMouseEnter(userContact.accountNumber + editPostfix)"
+                               (mouseleave)="onMouseLeave(userContact.accountNumber + editPostfix)"
+                               (@pulse.done)="onDone(userContact.accountNumber + editPostfix)"
+                               [@pulse]="getAnimationState(userContact.accountNumber + editPostfix)"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10">{{ userContact.assignedName }}</div>
+                        <div class="col-2">
+                            <i class="fa-solid fa-trash"
+                               (mouseenter)="onMouseEnter(userContact.accountNumber + deletePostfix)"
+                               (mouseleave)="onMouseLeave(userContact.accountNumber + deletePostfix)"
+                               (@pulse.done)="onDone(userContact.accountNumber + deletePostfix)"
+                               [@pulse]="getAnimationState(userContact.accountNumber + deletePostfix)"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @if (userContacts()?.length == 0) {
+            <h4 class="d-flex justify-content-center">Nothing here...</h4>
+        }
+    } @else {
+        <app-loading-spinner class="d-flex justify-content-center"/>
+    }
+</div>
