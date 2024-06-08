@@ -77,7 +77,6 @@ export class ContactsComponent {
   }
   
   getAnimationState(ref: string): State {
-    console.log(ref);
     const iconAnimation: IconAnimation | undefined = this.getAnimation(ref);
     if (iconAnimation) {
       return iconAnimation.state;
