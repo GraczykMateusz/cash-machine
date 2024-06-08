@@ -5,6 +5,8 @@ import { AllUserContacts } from './data/all-user-contacts';
 import { LoadingSpinnerComponent } from '../../../common/loading-spinner/loading-spinner.component';
 import { UserContact } from './data/user-contact';
 import { HamburgerComponent } from '../../../common/hamburger/hamburger.component';
+import { HamburgerOptionsComponent } from './ui/hamburger-options/hamburger-options.component';
+import { UsersFilterService } from './ui/hamburger-options/data/users-filter.service';
 
 @Component({
   selector: 'app-contacts',
@@ -18,7 +20,8 @@ import { HamburgerComponent } from '../../../common/hamburger/hamburger.componen
     NgbAccordionCollapse,
     NgbAccordionBody,
     NgbAccordionToggle,
-    HamburgerComponent
+    HamburgerComponent,
+    HamburgerOptionsComponent
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'
@@ -27,17 +30,12 @@ export class ContactsComponent {
   
   private readonly modal: NgbActiveModal = inject(NgbActiveModal);
   private readonly contactsService: UserContactsService = inject(UserContactsService);
+  private readonly userFilter: UsersFilterService = inject(UsersFilterService);
   
   readonly allUserContacts: Signal<AllUserContacts | undefined> = this.contactsService.allUserContacts;
   readonly userContacts: Signal<UserContact[] | undefined> = computed(() => {
-    return this.allUserContacts()?.contacts
-      .filter((contact: UserContact) => {
-        const foundAssignedName: boolean = contact.assignedName.toLowerCase().startsWith(this.filterValue());
-        const foundAccountNumber: boolean = contact.accountNumber.toLowerCase().startsWith(this.filterValue());
-        return foundAssignedName || foundAccountNumber;
-      });
+    return this.userFilter.filter(this.allUserContacts());
   });
-  readonly filterValue: WritableSignal<string> = signal<string>('');
   
   cancel(): void {
     this.modal.close();
@@ -47,15 +45,11 @@ export class ContactsComponent {
     this.modal.close(userContact);
   }
   
-  filter(event: Event): void {
-    this.filterValue.set((event.target as HTMLInputElement).value.toLowerCase());
+  addNewContact(): void {
+  
   }
   
   clearFilter(): void {
-    this.filterValue.set('');
-  }
-  
-  addNewContact() {
-  
+    this.userFilter.clearValue();
   }
 }

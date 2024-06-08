@@ -1,0 +1,14 @@
+<label for="contactFilter">Search contacts</label>
+<input id="contactFilter" type="search" class="form-control mb-2" placeholder="Search..."
+       [value]="filterValue()" (input)="filter($event)">
+
+<div class="mb-2">
+    <label for="accountNumber">New contact</label>
+    <input id="accountNumber" class="form-control m-0 mb-1" placeholder="Account number"/>
+    <div class="d-flex justify-content-between">
+        <input id="Name" class="form-control m-0 me-1 w-100" placeholder="Name">
+        <button type="button" class="btn btn-primary" (click)="addNewContact()">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+    </div>
+</div>
