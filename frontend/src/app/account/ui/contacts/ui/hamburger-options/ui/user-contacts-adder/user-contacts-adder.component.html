@@ -1,10 +1,34 @@
-<div class="mb-2">
+<div class="mb-2" [formGroup]="accountGroup">
     <label for="accountNumber">New contact</label>
-    <input id="accountNumber" class="form-control m-0 mb-1" placeholder="Account number"/>
-    <div class="d-flex justify-content-between">
-        <input id="Name" class="form-control m-0 me-1 w-100" placeholder="Name">
-        <button type="button" class="btn btn-primary" (click)="addNewContact()">
+    <input id="accountNumber" class="form-control m-0 mb-1"
+           (input)="formatAccountNumber($event)"
+           formControlName="accountNumber" placeholder="Account number"/>
+
+    <div class="d-flex justify-content-between mb-1">
+        <input id="Name" class="form-control m-0 me-1 w-100"
+               formControlName="contactName" placeholder="Contact name">
+        <button type="button" class="btn btn-primary"
+                (click)="addNewContact()" [disabled]="accountGroup.invalid">
             <i class="fa-solid fa-plus"></i>
         </button>
+    </div>
+
+    <div class="form-info">
+        @if (accountGroup.get(['contactName'])?.errors?.['error']) {
+            <div>
+                1. Contact name cannot be blank
+            </div>
+        } @else {
+            <div class="correct-input">
+                1. Contact name cannot be blank ✔️
+            </div>
+        }
+        @if (accountGroup.get(['accountNumber'])?.errors?.['error']) {
+            <div>2. Account number must be in the format: XXXX XXXX XXXX XXXX.</div>
+        } @else {
+            <div class="correct-input">
+                2. Account number must be in the format: XXXX XXXX XXXX XXXX. ✔️
+            </div>
+        }
     </div>
 </div>

@@ -1,5 +1,5 @@
 import { Component, inject, Signal } from '@angular/core';
-import { UsersFilterService } from '../../data/users-filter.service';
+import { UsersFilterService } from './data/users-filter.service';
 
 @Component({
   selector: 'app-user-contacts-filter',

@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal, Signal, WritableSignal } from '@angular/core';
+import { Component, computed, inject, Signal } from '@angular/core';
 import { NgbAccordionBody, NgbAccordionButton, NgbAccordionCollapse, NgbAccordionDirective, NgbAccordionHeader, NgbAccordionItem, NgbAccordionToggle, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserContactsService } from './data/user-contacts.service';
 import { AllUserContacts } from './data/all-user-contacts';
@@ -6,7 +6,7 @@ import { LoadingSpinnerComponent } from '../../../common/loading-spinner/loading
 import { UserContact } from './data/user-contact';
 import { HamburgerComponent } from '../../../common/hamburger/hamburger.component';
 import { HamburgerOptionsComponent } from './ui/hamburger-options/hamburger-options.component';
-import { UsersFilterService } from './ui/hamburger-options/data/users-filter.service';
+import { UsersFilterService } from './ui/hamburger-options/ui/user-contacts-filter/data/users-filter.service';
 
 @Component({
   selector: 'app-contacts',

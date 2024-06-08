@@ -1,6 +1,6 @@
 import { computed, Injectable, Signal, signal, WritableSignal } from '@angular/core';
-import { UserContact } from '../../../data/user-contact';
-import { AllUserContacts } from '../../../data/all-user-contacts';
+import { AllUserContacts } from '../../../../../data/all-user-contacts';
+import { UserContact } from '../../../../../data/user-contact';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class UsersFilterService {
   }
   
   filter(contacts: AllUserContacts | undefined): UserContact[] {
-    if (contacts == undefined || contacts.contacts == undefined) {
+    if (contacts?.contacts == undefined) {
       return []
     }
     return contacts.contacts
