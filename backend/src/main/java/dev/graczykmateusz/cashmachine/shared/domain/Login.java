@@ -1,25 +1,26 @@
-package dev.graczykmateusz.cashmachine.account;
+package dev.graczykmateusz.cashmachine.shared.domain;
 
 import dev.graczykmateusz.cashmachine.account.exception.IncorrectLoginException;
+import dev.graczykmateusz.cashmachine.policy.LoginPolicy;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-record Password(char[] value) {
-  
-  Password(PasswordPolicy passwordPolicy, char[] value) {
+public record Login(char[] value) {
+
+  public Login(LoginPolicy loginPolicy, char[] value) {
     this(value);
-    if (!passwordPolicy.isValid(value)) {
+    if (!loginPolicy.isValid(value)) {
       throw new IncorrectLoginException("Incorrect login!");
     }
   }
-  
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    Password password = (Password) o;
-    return Objects.deepEquals(value, password.value);
+    Login login = (Login) o;
+    return Objects.deepEquals(value, login.value);
   }
 
   @Override
@@ -29,6 +30,6 @@ record Password(char[] value) {
 
   @Override
   public String toString() {
-    return "Password{" + "value=" + Arrays.toString(value) + '}';
+    return "Login{" + "value=" + Arrays.toString(value) + '}';
   }
 }

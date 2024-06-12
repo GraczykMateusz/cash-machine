@@ -1,5 +1,6 @@
 package dev.graczykmateusz.cashmachine.handler;
 
+import dev.graczykmateusz.cashmachine.abstraction.exception.CashMachineException;
 import dev.graczykmateusz.cashmachine.abstraction.query.Query;
 import dev.graczykmateusz.cashmachine.abstraction.query.QueryHandler;
 import dev.graczykmateusz.cashmachine.abstraction.query.QueryHandlerExecutor;
@@ -50,7 +51,7 @@ class QueryHandlerExecutorImpl implements QueryHandlerExecutor {
       Result result = handler.handle(query);
       handlingStatus = HandlingStatus.SUCCESS;
       return result;
-    } catch (RuntimeException e) {
+    } catch (CashMachineException e) {
       handlingStatus = HandlingStatus.FAIL;
       throw e;
     } finally {

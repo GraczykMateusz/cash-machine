@@ -1,4 +1,4 @@
-package dev.graczykmateusz.cashmachine.account.cmd;
+package dev.graczykmateusz.cashmachine.account.command;
 
 import dev.graczykmateusz.cashmachine.abstraction.command.Command;
 

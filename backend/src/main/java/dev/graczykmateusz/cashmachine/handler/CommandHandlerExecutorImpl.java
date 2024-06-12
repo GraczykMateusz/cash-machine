@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import dev.graczykmateusz.cashmachine.abstraction.exception.CashMachineException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StopWatch;
 
@@ -47,7 +49,7 @@ class CommandHandlerExecutorImpl implements CommandHandlerExecutor {
     try {
       handler.handle(command);
       handlingStatus = HandlingStatus.SUCCESS;
-    } catch (RuntimeException e) {
+    } catch (CashMachineException e) {
       handlingStatus = HandlingStatus.FAIL;
       throw e;
     } finally {

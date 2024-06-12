@@ -1,9 +1,14 @@
 package dev.graczykmateusz.cashmachine.account;
 
 import dev.graczykmateusz.cashmachine.abstraction.command.CommandHandler;
-import dev.graczykmateusz.cashmachine.account.cmd.CreateAccount;
+import dev.graczykmateusz.cashmachine.account.command.CreateAccount;
 import java.time.Clock;
 import java.time.LocalDateTime;
+
+import dev.graczykmateusz.cashmachine.policy.LoginPolicy;
+import dev.graczykmateusz.cashmachine.policy.PasswordPolicy;
+import dev.graczykmateusz.cashmachine.shared.domain.Login;
+import dev.graczykmateusz.cashmachine.shared.domain.Password;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

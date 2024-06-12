@@ -1,7 +1,7 @@
 package dev.graczykmateusz.cashmachine.account;
 
 import dev.graczykmateusz.cashmachine.abstraction.command.CommandHandler;
-import dev.graczykmateusz.cashmachine.account.cmd.RemoveAllAccounts;
+import dev.graczykmateusz.cashmachine.account.command.RemoveAllAccounts;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

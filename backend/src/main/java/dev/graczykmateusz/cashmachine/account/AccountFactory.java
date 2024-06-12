@@ -1,6 +1,10 @@
 package dev.graczykmateusz.cashmachine.account;
 
 import java.time.LocalDateTime;
+
+import dev.graczykmateusz.cashmachine.shared.domain.Login;
+import dev.graczykmateusz.cashmachine.shared.domain.Password;
+import dev.graczykmateusz.cashmachine.shared.constant.AccountStatus;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
