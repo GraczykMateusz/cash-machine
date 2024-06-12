@@ -2,4 +2,4 @@ package dev.graczykmateusz.cashmachine.account.event;
 
 import dev.graczykmateusz.cashmachine.abstraction.event.DomainEvent;
 
-public class AccountExceededTooManyLoginAttempts implements DomainEvent {}
+public record AccountExceededTooManyLoginAttempts() implements DomainEvent {}
