@@ -1,8 +1,8 @@
 package dev.graczykmateusz.cashmachine.account;
 
-import java.time.LocalDateTime;
-
+import dev.graczykmateusz.cashmachine.account.number.dto.AccountNumberDto;
 import dev.graczykmateusz.cashmachine.shared.constant.AccountStatus;
+import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 class Account {
 
   @Id private String id;
+  private AccountNumberDto accountNumber;
   private String firstName;
   private String lastName;
   private String personalId;
@@ -26,6 +27,7 @@ class Account {
   private Password password;
 
   Account(
+      AccountNumberDto accountNumber,
       String firstName,
       String lastName,
       String personalId,
@@ -33,6 +35,7 @@ class Account {
       LocalDateTime createdAt,
       Login login,
       Password password) {
+    this.accountNumber = accountNumber;
     this.firstName = firstName;
     this.lastName = lastName;
     this.status = status;
@@ -44,7 +47,7 @@ class Account {
 
   void changePassword(Password password) {
     this.password = password;
-//    eventPublisher.publishEvent(new PasswordWasChanged(id));
+    //    eventPublisher.publishEvent(new PasswordWasChanged(id));
   }
 
   void closeAccount() {
@@ -52,6 +55,6 @@ class Account {
       return;
     }
     status = AccountStatus.CLOSED;
-//    eventPublisher.publishEvent(new AccountWasClosed(id));
+    //    eventPublisher.publishEvent(new AccountWasClosed(id));
   }
 }

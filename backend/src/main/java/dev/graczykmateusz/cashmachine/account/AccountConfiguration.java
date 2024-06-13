@@ -6,11 +6,11 @@ import dev.graczykmateusz.cashmachine.account.command.ChangePassword;
 import dev.graczykmateusz.cashmachine.account.command.CreateAccount;
 import dev.graczykmateusz.cashmachine.account.command.RemoveAllAccounts;
 import dev.graczykmateusz.cashmachine.account.dto.AccountDetailsDto;
+import dev.graczykmateusz.cashmachine.account.number.AccountNumberGenerator;
 import dev.graczykmateusz.cashmachine.account.query.GetAccountDetails;
-import java.time.Clock;
-
 import dev.graczykmateusz.cashmachine.policy.LoginPolicy;
 import dev.graczykmateusz.cashmachine.policy.PasswordPolicy;
+import java.time.Clock;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,14 +19,16 @@ class AccountConfiguration {
 
   @Bean
   CommandHandler<CreateAccount> createAccountCommandHandler(
-      AccountRepository repository, Clock clock) {
+      AccountRepository repository, AccountNumberGenerator accountNumberGenerator, Clock clock) {
     LoginPolicy loginPolicy = new LoginPolicy();
     PasswordPolicy passwordPolicy = new PasswordPolicy();
-    return new CreateAccountCommandHandler(repository, clock, loginPolicy, passwordPolicy);
+    return new CreateAccountCommandHandler(
+        repository, accountNumberGenerator, clock, loginPolicy, passwordPolicy);
   }
 
   @Bean
-  CommandHandler<ChangePassword> changePasswordCommandHandler(AccountQueryRepository queryRepository) {
+  CommandHandler<ChangePassword> changePasswordCommandHandler(
+      AccountQueryRepository queryRepository) {
     return new ChangePasswordCommandHandler(queryRepository);
   }
 
