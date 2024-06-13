@@ -3,7 +3,6 @@ import { AccountComponent } from '../../../account/account.component';
 import { NgbNav, NgbNavContent, NgbNavItem, NgbNavItemRole, NgbNavLinkBase, NgbNavLinkButton, NgbNavOutlet } from '@ng-bootstrap/ng-bootstrap';
 import { HistoryComponent } from '../../../history/history.component';
 import { ForexComponent } from '../../../forex/forex.component';
-import { SavingsComponent } from '../../../savings/savings.component';
 import { ContactsComponent } from '../../../contacts/contacts.component';
 
 @Component({
@@ -20,7 +19,6 @@ import { ContactsComponent } from '../../../contacts/contacts.component';
     NgbNavOutlet,
     HistoryComponent,
     ForexComponent,
-    SavingsComponent,
     ContactsComponent
   ],
   templateUrl: './nav-bar.component.html',
