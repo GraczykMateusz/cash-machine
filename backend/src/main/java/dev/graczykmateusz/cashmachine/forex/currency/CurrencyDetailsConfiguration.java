@@ -17,7 +17,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration(proxyBeanMethods = false)
 class CurrencyDetailsConfiguration {
-
+  
+  private final CurrencyDetailsGrouper grouper = new CurrencyDetailsGrouper();
+  
   @Bean
   CommandHandler<UpdateDailyCurrencyDetails> updateLastWeekCurrencyDetailsCommandHandler(
       CurrencyForexClient client, CurrencyDetailsRepository repository) {
@@ -45,14 +47,12 @@ class CurrencyDetailsConfiguration {
   @Bean
   QueryHandler<AllCurrencyDetailsDto, GetAllCurrencyDetails> getAllCurrencyDetailsQueryHandler(
       CurrencyDetailsQueryRepository queryRepository) {
-    var grouper = new CurrencyDetailsGrouper(); // todo should be singleton
     return new GetAllCurrencyDetailsQueryHandler(grouper, queryRepository);
   }
   
   @Bean
   QueryHandler<CurrencyDetailsDto, GetCurrencyDetails> getCurrencyDetailsQueryHandler(
           CurrencyDetailsQueryRepository queryRepository) {
-    var grouper = new CurrencyDetailsGrouper(); // todo should be singleton
     return new GetCurrencyDetailsQueryHandler(grouper, queryRepository);
   }
 }

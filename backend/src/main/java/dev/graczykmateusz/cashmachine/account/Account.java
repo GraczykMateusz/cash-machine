@@ -1,7 +1,9 @@
 package dev.graczykmateusz.cashmachine.account;
 
 import dev.graczykmateusz.cashmachine.account.number.dto.AccountNumberDto;
+import dev.graczykmateusz.cashmachine.account.password.dto.EncodedPassword;
 import dev.graczykmateusz.cashmachine.shared.constant.AccountStatus;
+import dev.graczykmateusz.cashmachine.shared.domain.Login;
 import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -24,7 +26,7 @@ class Account {
   private LocalDateTime createdAt;
 
   private Login login;
-  private Password password;
+  private EncodedPassword encodedPassword;
 
   Account(
       AccountNumberDto accountNumber,
@@ -34,7 +36,7 @@ class Account {
       AccountStatus status,
       LocalDateTime createdAt,
       Login login,
-      Password password) {
+      EncodedPassword encodedPassword) {
     this.accountNumber = accountNumber;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -42,11 +44,11 @@ class Account {
     this.createdAt = createdAt;
     this.personalId = personalId;
     this.login = login;
-    this.password = password;
+    this.encodedPassword = encodedPassword;
   }
 
-  void changePassword(Password password) {
-    this.password = password;
+  void changePassword(EncodedPassword encodedPassword) {
+    this.encodedPassword = encodedPassword;
     //    eventPublisher.publishEvent(new PasswordWasChanged(id));
   }
 

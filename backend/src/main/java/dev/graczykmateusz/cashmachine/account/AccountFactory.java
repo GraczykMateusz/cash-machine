@@ -3,7 +3,9 @@ package dev.graczykmateusz.cashmachine.account;
 import java.time.LocalDateTime;
 
 import dev.graczykmateusz.cashmachine.account.number.dto.AccountNumberDto;
+import dev.graczykmateusz.cashmachine.account.password.dto.EncodedPassword;
 import dev.graczykmateusz.cashmachine.shared.constant.AccountStatus;
+import dev.graczykmateusz.cashmachine.shared.domain.Login;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +19,7 @@ class AccountFactory {
       String personalId,
       LocalDateTime createAt,
       Login login,
-      Password password) {
+      EncodedPassword encodedPassword) {
     return new Account(
         accountNumber,
         firstName,
@@ -26,6 +28,6 @@ class AccountFactory {
         AccountStatus.ACTIVE,
         createAt,
         login,
-        password);
+        encodedPassword);
   }
 }

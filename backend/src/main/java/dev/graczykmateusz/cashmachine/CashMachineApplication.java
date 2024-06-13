@@ -25,10 +25,6 @@ public class CashMachineApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) {
-    // clean up
-    commandHandlerExecutor.execute(new RemoveAllAccounts());
-    commandHandlerExecutor.execute(new RemoveAllCurrencyDetails());
-
     // currency details
     commandHandlerExecutor.execute(new UpdateDailyCurrencyDetails(ExchangeSymbol.EURPLN));
     commandHandlerExecutor.execute(new UpdateDailyCurrencyDetails(ExchangeSymbol.USDPLN));

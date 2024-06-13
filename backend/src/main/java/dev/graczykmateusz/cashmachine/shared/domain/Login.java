@@ -1,14 +1,14 @@
-package dev.graczykmateusz.cashmachine.account;
+package dev.graczykmateusz.cashmachine.shared.domain;
 
-import dev.graczykmateusz.cashmachine.account.exception.IncorrectLoginException;
+import dev.graczykmateusz.cashmachine.shared.domain.exception.IncorrectLoginException;
 import dev.graczykmateusz.cashmachine.policy.LoginPolicy;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-record Login(char[] value) {
+public record Login(char[] value) {
 
-  Login(LoginPolicy loginPolicy, char[] value) {
+  public Login(LoginPolicy loginPolicy, char[] value) {
     this(value);
     if (!loginPolicy.isValid(value)) {
       throw new IncorrectLoginException("Incorrect login!");
@@ -30,6 +30,6 @@ record Login(char[] value) {
 
   @Override
   public String toString() {
-    return "Login{" + "value=" + Arrays.toString(value) + '}';
+    return "Login{" + "value=" + "*".repeat(value.length) + '}';
   }
 }

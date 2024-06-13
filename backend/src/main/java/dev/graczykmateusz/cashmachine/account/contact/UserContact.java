@@ -1,12 +1,12 @@
 package dev.graczykmateusz.cashmachine.account.contact;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@AllArgsConstructor
+@Document("user-contacts")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter(AccessLevel.PROTECTED)
 class UserContact {

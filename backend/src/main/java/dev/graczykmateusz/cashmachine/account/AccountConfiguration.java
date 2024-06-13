@@ -7,6 +7,8 @@ import dev.graczykmateusz.cashmachine.account.command.CreateAccount;
 import dev.graczykmateusz.cashmachine.account.command.RemoveAllAccounts;
 import dev.graczykmateusz.cashmachine.account.dto.AccountDetailsDto;
 import dev.graczykmateusz.cashmachine.account.number.AccountNumberGenerator;
+import dev.graczykmateusz.cashmachine.account.password.PasswordEncoder;
+import dev.graczykmateusz.cashmachine.account.password.PasswordVerifier;
 import dev.graczykmateusz.cashmachine.account.query.GetAccountDetails;
 import dev.graczykmateusz.cashmachine.policy.LoginPolicy;
 import dev.graczykmateusz.cashmachine.policy.PasswordPolicy;
@@ -19,17 +21,22 @@ class AccountConfiguration {
 
   @Bean
   CommandHandler<CreateAccount> createAccountCommandHandler(
-      AccountRepository repository, AccountNumberGenerator accountNumberGenerator, Clock clock) {
+      AccountRepository repository,
+      AccountNumberGenerator accountNumberGenerator,
+      PasswordEncoder passwordEncoder,
+      Clock clock) {
     LoginPolicy loginPolicy = new LoginPolicy();
     PasswordPolicy passwordPolicy = new PasswordPolicy();
     return new CreateAccountCommandHandler(
-        repository, accountNumberGenerator, clock, loginPolicy, passwordPolicy);
+        repository, accountNumberGenerator, passwordEncoder, clock, loginPolicy, passwordPolicy);
   }
 
   @Bean
   CommandHandler<ChangePassword> changePasswordCommandHandler(
-      AccountQueryRepository queryRepository) {
-    return new ChangePasswordCommandHandler(queryRepository);
+      AccountQueryRepository queryRepository,
+      PasswordEncoder passwordEncoder,
+      PasswordVerifier passwordVerifier) {
+    return new ChangePasswordCommandHandler(queryRepository, passwordEncoder, passwordVerifier);
   }
 
   @Bean
