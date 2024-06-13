@@ -22,13 +22,20 @@ class AccountConfiguration {
   @Bean
   CommandHandler<CreateAccount> createAccountCommandHandler(
       AccountRepository repository,
+      AccountQueryRepository queryRepository,
       AccountNumberGenerator accountNumberGenerator,
       PasswordEncoder passwordEncoder,
       Clock clock) {
     LoginPolicy loginPolicy = new LoginPolicy();
     PasswordPolicy passwordPolicy = new PasswordPolicy();
     return new CreateAccountCommandHandler(
-        repository, accountNumberGenerator, passwordEncoder, clock, loginPolicy, passwordPolicy);
+        repository,
+        queryRepository,
+        accountNumberGenerator,
+        passwordEncoder,
+        clock,
+        loginPolicy,
+        passwordPolicy);
   }
 
   @Bean

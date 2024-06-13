@@ -5,4 +5,6 @@ import java.util.Optional;
 interface AccountQueryRepository {
 
   Optional<Account> findById(String id);
+  
+  Optional<Account> findByPersonalId(String personalId);
 }
