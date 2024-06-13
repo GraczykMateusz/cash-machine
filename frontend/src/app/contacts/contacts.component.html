@@ -1,6 +1,5 @@
-<div class="max-height">
-
-    @if (allUserContacts()) {
+@if (allUserContacts()) {
+    <div class="max-height">
         @for (userContact of userContacts(); track userContacts()) {
             <div class="btn btn-primary w-100 mb-2" disabled="true">
                 <div class="container">
@@ -32,7 +31,7 @@
         @if (userContacts()?.length == 0) {
             <h4 class="d-flex justify-content-center">Nothing here...</h4>
         }
-    } @else {
-        <app-loading-spinner class="d-flex justify-content-center"/>
-    }
-</div>
+    </div>
+} @else {
+    <app-loading-spinner class="d-flex justify-content-center"/>
+}
