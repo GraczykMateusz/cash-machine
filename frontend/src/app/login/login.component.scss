@@ -42,6 +42,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  text-align: center;
   gap: 15px;
   width: 100%;
 }
@@ -53,6 +54,7 @@
 }
 
 h1, h5 {
+  text-align: center;
   margin-bottom: 0 !important;
   font-family: 'Calisto MT', serif !important;
 }

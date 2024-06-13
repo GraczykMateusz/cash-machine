@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 enum Error {
@@ -12,14 +12,16 @@ enum Error {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [
+    ReactiveFormsModule
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   
   loginGroup = new FormGroup({
-    email: new FormControl<string | null>(null, [Validators.required, Validators.email]),
+    login: new FormControl<string | null>(null, [Validators.required, Validators.email]),
     password: new FormControl<string | null>(null, [Validators.required, Validators.minLength(6)])
   });
   
@@ -37,7 +39,7 @@ export class LoginComponent {
       this.error = Error.INVALID_EMAIL_OR_PASSWORD;
       return;
     }
-    const login = this.loginGroup.value.email!;
+    const login = this.loginGroup.value.login!;
     const password = this.loginGroup.value.password!;
   }
   
