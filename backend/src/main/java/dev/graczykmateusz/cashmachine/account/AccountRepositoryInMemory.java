@@ -2,8 +2,9 @@ package dev.graczykmateusz.cashmachine.account;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-class AccountRepositoryInMemory implements AccountRepository {
+class AccountRepositoryInMemory implements AccountRepository, AccountQueryRepository {
 
   private final List<Account> data = new ArrayList<>();
 
@@ -16,5 +17,10 @@ class AccountRepositoryInMemory implements AccountRepository {
   @Override
   public void deleteAll() {
     data.clear();
+  }
+
+  @Override
+  public Optional<Account> findById(String id) {
+    return data.stream().filter(account -> account.getId().equals(id)).findFirst();
   }
 }

@@ -1,4 +1,4 @@
-package dev.graczykmateusz.cashmachine.shared.domain;
+package dev.graczykmateusz.cashmachine.account;
 
 import dev.graczykmateusz.cashmachine.account.exception.IncorrectLoginException;
 import dev.graczykmateusz.cashmachine.policy.PasswordPolicy;
@@ -6,9 +6,9 @@ import dev.graczykmateusz.cashmachine.policy.PasswordPolicy;
 import java.util.Arrays;
 import java.util.Objects;
 
-public record Password(char[] value) {
+record Password(char[] value) {
   
-  public Password(PasswordPolicy passwordPolicy, char[] value) {
+  Password(PasswordPolicy passwordPolicy, char[] value) {
     this(value);
     if (!passwordPolicy.isValid(value)) {
       throw new IncorrectLoginException("Incorrect login!");

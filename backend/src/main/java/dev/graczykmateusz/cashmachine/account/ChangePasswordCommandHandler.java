@@ -3,7 +3,6 @@ package dev.graczykmateusz.cashmachine.account;
 import dev.graczykmateusz.cashmachine.abstraction.command.CommandHandler;
 import dev.graczykmateusz.cashmachine.account.command.ChangePassword;
 import dev.graczykmateusz.cashmachine.account.exception.AccountNotFoundException;
-import dev.graczykmateusz.cashmachine.shared.domain.Password;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

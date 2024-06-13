@@ -1,4 +1,4 @@
-package dev.graczykmateusz.cashmachine.account.money.transfer.exception;
+package dev.graczykmateusz.cashmachine.shared.domain.exception;
 
 import dev.graczykmateusz.cashmachine.abstraction.exception.CashMachineException;
 

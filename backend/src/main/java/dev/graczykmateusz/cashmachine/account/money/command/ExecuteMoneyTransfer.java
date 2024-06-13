@@ -1,4 +1,4 @@
-package dev.graczykmateusz.cashmachine.account.money.transfer.command;
+package dev.graczykmateusz.cashmachine.account.money.command;
 
 import dev.graczykmateusz.cashmachine.abstraction.command.Command;
 import java.math.BigDecimal;

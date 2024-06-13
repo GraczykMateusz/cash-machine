@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 
 import dev.graczykmateusz.cashmachine.policy.LoginPolicy;
 import dev.graczykmateusz.cashmachine.policy.PasswordPolicy;
-import dev.graczykmateusz.cashmachine.shared.domain.Login;
-import dev.graczykmateusz.cashmachine.shared.domain.Password;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
