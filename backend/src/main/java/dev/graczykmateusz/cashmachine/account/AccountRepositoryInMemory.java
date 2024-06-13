@@ -23,4 +23,9 @@ class AccountRepositoryInMemory implements AccountRepository, AccountQueryReposi
   public Optional<Account> findById(String id) {
     return data.stream().filter(account -> account.getId().equals(id)).findFirst();
   }
+
+  @Override
+  public Optional<Account> findByPersonalId(String personalId) {
+    return data.stream().filter(account -> account.getPersonalId().equals(personalId)).findFirst();
+  }
 }
