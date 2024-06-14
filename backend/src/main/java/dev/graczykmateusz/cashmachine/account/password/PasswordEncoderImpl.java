@@ -5,6 +5,8 @@ import dev.graczykmateusz.cashmachine.shared.domain.Password;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.nio.CharBuffer;
+
 @RequiredArgsConstructor
 class PasswordEncoderImpl implements PasswordEncoder {
 
@@ -12,7 +14,8 @@ class PasswordEncoderImpl implements PasswordEncoder {
 
   @Override
   public EncodedPassword encodePassword(Password password) {
-    char[] encodePassword = encoder.encode(String.valueOf(password.value())).toCharArray();
+    CharBuffer passwordBuffer = CharBuffer.wrap(password.value();
+    char[] encodePassword = encoder.encode(passwordBuffer).toCharArray();
     return new EncodedPassword(encodePassword);
   }
 }
