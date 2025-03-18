@@ -10,23 +10,20 @@ import { State } from './data/icon-animation-state';
 import { IconAnimation } from './data/icon-animation';
 
 @Component({
-  selector: 'app-contacts',
-  standalone: true,
-  imports: [
-    LoadingSpinnerComponent
-  ],
-  templateUrl: './contacts.component.html',
-  styleUrl: './contacts.component.scss',
-  animations: [
-    trigger('pulse', [
-      state(State.VOID, style({opacity: '1'})),
-      state(State.ACTIVE, style({opacity: '1'})),
-      state(State.INACTIVE, style({opacity: '1'})),
-      transition(
-        State.ACTIVE + ' => ' + State.INACTIVE,
-        useAnimation(pulse, {params: {timing: 1}}))
-    ])
-  ]
+    selector: 'app-contacts',
+    imports: [
+        LoadingSpinnerComponent
+    ],
+    templateUrl: './contacts.component.html',
+    styleUrl: './contacts.component.scss',
+    animations: [
+        trigger('pulse', [
+            state(State.VOID, style({ opacity: '1' })),
+            state(State.ACTIVE, style({ opacity: '1' })),
+            state(State.INACTIVE, style({ opacity: '1' })),
+            transition(State.ACTIVE + ' => ' + State.INACTIVE, useAnimation(pulse, { params: { timing: 1 } }))
+        ])
+    ]
 })
 export class ContactsComponent {
   

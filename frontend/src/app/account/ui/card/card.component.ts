@@ -2,14 +2,13 @@ import { Component } from '@angular/core';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-card',
-  standalone: true,
-  imports: [
-    DecimalPipe,
-    CurrencyPipe
-  ],
-  templateUrl: './card.component.html',
-  styleUrl: './card.component.scss'
+    selector: 'app-card',
+    imports: [
+        DecimalPipe,
+        CurrencyPipe
+    ],
+    templateUrl: './card.component.html',
+    styleUrl: './card.component.scss'
 })
 export class CardComponent {
   

@@ -7,15 +7,14 @@ import { first } from 'rxjs';
 import { UserContact } from '../contacts/data/user-contact';
 
 @Component({
-  selector: 'app-transaction-form',
-  standalone: true,
-  imports: [
-    NgbInputDatepicker,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  templateUrl: './transaction-form.component.html',
-  styleUrl: './transaction-form.component.scss'
+    selector: 'app-transaction-form',
+    imports: [
+        NgbInputDatepicker,
+        FormsModule,
+        ReactiveFormsModule
+    ],
+    templateUrl: './transaction-form.component.html',
+    styleUrl: './transaction-form.component.scss'
 })
 export class TransactionFormComponent {
   

@@ -4,13 +4,12 @@ import { ChartService } from '../../data/chart/chart.service';
 import { NgStyle } from '@angular/common';
 
 @Component({
-  selector: 'app-chart-filter-switch-button',
-  standalone: true,
-  imports: [
-    NgStyle
-  ],
-  templateUrl: './chart-filter-switch-button.component.html',
-  styleUrl: './chart-filter-switch-button.component.scss'
+    selector: 'app-chart-filter-switch-button',
+    imports: [
+        NgStyle
+    ],
+    templateUrl: './chart-filter-switch-button.component.html',
+    styleUrl: './chart-filter-switch-button.component.scss'
 })
 export class ChartFilterSwitchButtonComponent {
   

@@ -36,13 +36,12 @@ const COUNTRIES: Country[] = [
 ];
 
 @Component({
-  selector: 'app-transactions-table',
-  standalone: true,
-  imports: [
-    DecimalPipe
-  ],
-  templateUrl: './transactions-table.component.html',
-  styleUrl: './transactions-table.component.scss'
+    selector: 'app-transactions-table',
+    imports: [
+        DecimalPipe
+    ],
+    templateUrl: './transactions-table.component.html',
+    styleUrl: './transactions-table.component.scss'
 })
 export class TransactionsTableComponent {
   countries = COUNTRIES;

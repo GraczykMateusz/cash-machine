@@ -9,22 +9,21 @@ import { HamburgerOptionsComponent } from './ui/hamburger-options/hamburger-opti
 import { UsersFilterService } from './ui/hamburger-options/ui/user-contacts-filter/data/users-filter.service';
 
 @Component({
-  selector: 'app-contacts',
-  standalone: true,
-  imports: [
-    LoadingSpinnerComponent,
-    NgbAccordionDirective,
-    NgbAccordionItem,
-    NgbAccordionHeader,
-    NgbAccordionButton,
-    NgbAccordionCollapse,
-    NgbAccordionBody,
-    NgbAccordionToggle,
-    HamburgerComponent,
-    HamburgerOptionsComponent
-  ],
-  templateUrl: './contacts.component.html',
-  styleUrl: './contacts.component.scss'
+    selector: 'app-contacts',
+    imports: [
+        LoadingSpinnerComponent,
+        NgbAccordionDirective,
+        NgbAccordionItem,
+        NgbAccordionHeader,
+        NgbAccordionButton,
+        NgbAccordionCollapse,
+        NgbAccordionBody,
+        NgbAccordionToggle,
+        HamburgerComponent,
+        HamburgerOptionsComponent
+    ],
+    templateUrl: './contacts.component.html',
+    styleUrl: './contacts.component.scss'
 })
 export class ContactsComponent {
   

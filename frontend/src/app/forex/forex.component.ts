@@ -12,22 +12,21 @@ import Chart from 'chart.js/auto';
 import { ChartType } from './ui/chart-type-switch-button/data/chart-type';
 
 @Component({
-  selector: 'app-forex',
-  standalone: true,
-  imports: [
-    BaseChartDirective,
-    LoadingSpinnerComponent,
-    NgOptimizedImage,
-    NgbDropdown,
-    NgbDropdownItem,
-    NgbDropdownMenu,
-    NgbDropdownToggle,
-    ChartTypeSwitchButtonComponent,
-    ChartFilterSwitchButtonComponent,
-    NgClass
-  ],
-  templateUrl: './forex.component.html',
-  styleUrl: './forex.component.scss'
+    selector: 'app-forex',
+    imports: [
+        BaseChartDirective,
+        LoadingSpinnerComponent,
+        NgOptimizedImage,
+        NgbDropdown,
+        NgbDropdownItem,
+        NgbDropdownMenu,
+        NgbDropdownToggle,
+        ChartTypeSwitchButtonComponent,
+        ChartFilterSwitchButtonComponent,
+        NgClass
+    ],
+    templateUrl: './forex.component.html',
+    styleUrl: './forex.component.scss'
 })
 export class ForexComponent {
   

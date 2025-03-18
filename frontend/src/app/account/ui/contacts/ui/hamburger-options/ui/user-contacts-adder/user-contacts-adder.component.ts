@@ -5,13 +5,12 @@ import { AccountNumberService } from '../../../../../../../common/account-number
 import { userContactNameValidator } from '../../../../../../../common/user-contact-name/validator/user-contact-name-validator';
 
 @Component({
-  selector: 'app-user-contacts-adder',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule
-  ],
-  templateUrl: './user-contacts-adder.component.html',
-  styleUrl: './user-contacts-adder.component.scss'
+    selector: 'app-user-contacts-adder',
+    imports: [
+        ReactiveFormsModule
+    ],
+    templateUrl: './user-contacts-adder.component.html',
+    styleUrl: './user-contacts-adder.component.scss'
 })
 export class UserContactsAdderComponent {
   

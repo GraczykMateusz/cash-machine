@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-hamburger',
-  standalone: true,
-  imports: [],
-  templateUrl: './hamburger.component.html',
-  styleUrl: './hamburger.component.scss'
+    selector: 'app-hamburger',
+    imports: [],
+    templateUrl: './hamburger.component.html',
+    styleUrl: './hamburger.component.scss'
 })
 export class HamburgerComponent {
   
