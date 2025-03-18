@@ -14,7 +14,7 @@ class PasswordEncoderImpl implements PasswordEncoder {
 
   @Override
   public EncodedPassword encodePassword(Password password) {
-    CharBuffer passwordBuffer = CharBuffer.wrap(password.value();
+    CharBuffer passwordBuffer = CharBuffer.wrap(password.value());
     char[] encodePassword = encoder.encode(passwordBuffer).toCharArray();
     return new EncodedPassword(encodePassword);
   }
