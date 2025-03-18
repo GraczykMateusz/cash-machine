@@ -11,7 +11,7 @@ describe('TransactionsTableComponent', () => {
       imports: [TransactionsTableComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(TransactionsTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

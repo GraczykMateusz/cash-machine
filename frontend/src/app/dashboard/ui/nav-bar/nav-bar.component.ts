@@ -6,22 +6,22 @@ import { ForexComponent } from '../../../forex/forex.component';
 import { ContactsComponent } from '../../../contacts/contacts.component';
 
 @Component({
-    selector: 'app-nav-bar',
-    imports: [
-        AccountComponent,
-        NgbNav,
-        NgbNavContent,
-        NgbNavItem,
-        NgbNavItemRole,
-        NgbNavLinkBase,
-        NgbNavLinkButton,
-        NgbNavOutlet,
-        HistoryComponent,
-        ForexComponent,
-        ContactsComponent
-    ],
-    templateUrl: './nav-bar.component.html',
-    styleUrl: './nav-bar.component.scss'
+  selector: 'app-nav-bar',
+  imports: [
+    AccountComponent,
+    NgbNav,
+    NgbNavContent,
+    NgbNavItem,
+    NgbNavItemRole,
+    NgbNavLinkBase,
+    NgbNavLinkButton,
+    NgbNavOutlet,
+    HistoryComponent,
+    ForexComponent,
+    ContactsComponent
+  ],
+  templateUrl: './nav-bar.component.html',
+  styleUrl: './nav-bar.component.scss'
 })
 export class NavBarComponent {
 

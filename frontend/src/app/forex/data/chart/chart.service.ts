@@ -8,35 +8,35 @@ import { CurrencyPrice } from '../detail/currency-price';
   providedIn: 'root'
 })
 export class ChartService {
-  
+
   private static readonly CHART_ID: string = 'chart';
-  
+
   private readonly _chartType: WritableSignal<ChartType> = signal('EURPLN');
   private readonly _chartFilter: WritableSignal<ChartFilterType> = signal('LAST_10M');
-  
+
   get chartType() {
     return computed(() => this._chartType());
   }
-  
+
   get chartFilter() {
     return computed(() => this._chartFilter());
   }
-  
+
   updateChartType(chartType: ChartType): void {
     this._chartType.set(chartType);
   }
-  
+
   updateChartFilter(chartFilterType: ChartFilterType): void {
     this._chartFilter.set(chartFilterType);
   }
-  
+
   createChart(currencyPrices: CurrencyPrice[] | undefined): Chart | undefined {
     if (currencyPrices == undefined || currencyPrices.length == 0) {
       return undefined;
     }
-    
+
     Chart.getChart(ChartService.CHART_ID)?.destroy();
-    
+
     return new Chart(ChartService.CHART_ID, {
       type: 'line',
       data: {

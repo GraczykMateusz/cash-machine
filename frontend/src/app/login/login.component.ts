@@ -10,29 +10,29 @@ enum Error {
 }
 
 @Component({
-    selector: 'app-login',
-    imports: [
-        ReactiveFormsModule
-    ],
-    templateUrl: './login.component.html',
-    styleUrl: './login.component.scss'
+  selector: 'app-login',
+  imports: [
+    ReactiveFormsModule
+  ],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  
+
   loginGroup = new FormGroup({
     login: new FormControl<string | null>(null, [Validators.required, Validators.email]),
     password: new FormControl<string | null>(null, [Validators.required, Validators.minLength(6)])
   });
-  
+
   protected readonly Error = Error;
   protected error: Error | null = null;
-  
+
   ngOnInit(): void {
     this.loginGroup.valueChanges
-      .pipe(takeUntilDestroyed())
-      .subscribe(() => this.resetError());
+    .pipe(takeUntilDestroyed())
+    .subscribe(() => this.resetError());
   }
-  
+
   signIn(): void {
     if (this.loginGroup.invalid) {
       this.error = Error.INVALID_EMAIL_OR_PASSWORD;
@@ -41,7 +41,7 @@ export class LoginComponent {
     const login = this.loginGroup.value.login!;
     const password = this.loginGroup.value.password!;
   }
-  
+
   resetError(): void {
     this.error = null;
   }

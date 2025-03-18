@@ -12,27 +12,27 @@ import Chart from 'chart.js/auto';
 import { ChartType } from './ui/chart-type-switch-button/data/chart-type';
 
 @Component({
-    selector: 'app-forex',
-    imports: [
-        BaseChartDirective,
-        LoadingSpinnerComponent,
-        NgOptimizedImage,
-        NgbDropdown,
-        NgbDropdownItem,
-        NgbDropdownMenu,
-        NgbDropdownToggle,
-        ChartTypeSwitchButtonComponent,
-        ChartFilterSwitchButtonComponent,
-        NgClass
-    ],
-    templateUrl: './forex.component.html',
-    styleUrl: './forex.component.scss'
+  selector: 'app-forex',
+  imports: [
+    BaseChartDirective,
+    LoadingSpinnerComponent,
+    NgOptimizedImage,
+    NgbDropdown,
+    NgbDropdownItem,
+    NgbDropdownMenu,
+    NgbDropdownToggle,
+    ChartTypeSwitchButtonComponent,
+    ChartFilterSwitchButtonComponent,
+    NgClass
+  ],
+  templateUrl: './forex.component.html',
+  styleUrl: './forex.component.scss'
 })
 export class ForexComponent {
-  
+
   private readonly forexClientService: ForexClientService = inject(ForexClientService);
   private readonly chartService: ChartService = inject(ChartService);
-  
+
   readonly currencyDetails: Signal<CurrencyDetails | undefined> =
     computed(() => this.forexClientService.currencyDetails());
   readonly chartType: Signal<ChartType> =

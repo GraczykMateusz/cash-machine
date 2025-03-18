@@ -1,12 +1,12 @@
 <div class="account pt-2">
-    <h1 class="account-type gradient-text">{{ accountType }}</h1>
-    <h3>{{ accountNumber }}</h3>
-    <div class="d-flex justify-content-end align-items-end pt-1">
-        @if (balance < 1000000) {
-            <h2>{{ balance | currency: currency : true : '1.2-2'}}</h2>
-        } @else {
-            <h3>{{ balance | currency: currency : true : '1.2-2'}}</h3>
-        }
-    </div>
-    <i class="fa-brands fa-cc-visa fa-2x"></i>
+  <h1 class="account-type gradient-text">{{ accountType }}</h1>
+  <h3>{{ accountNumber }}</h3>
+  <div class="d-flex justify-content-end align-items-end pt-1">
+    @if (balance < 1000000) {
+      <h2>{{ balance | currency: currency : true : '1.2-2' }}</h2>
+    } @else {
+      <h3>{{ balance | currency: currency : true : '1.2-2' }}</h3>
+    }
+  </div>
+  <i class="fa-brands fa-cc-visa fa-2x"></i>
 </div>

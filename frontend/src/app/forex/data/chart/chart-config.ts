@@ -6,5 +6,6 @@ export class ChartConfig {
     public data: {
       labels: string[]
       datasets: ChartDataSet[]
-    }) {}
+    }) {
+  }
 }

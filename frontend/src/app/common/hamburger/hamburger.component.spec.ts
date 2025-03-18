@@ -11,7 +11,7 @@ describe('HamburgerComponent', () => {
       imports: [HamburgerComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(HamburgerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

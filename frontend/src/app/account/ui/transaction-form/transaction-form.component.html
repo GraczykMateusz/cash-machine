@@ -1,43 +1,43 @@
 <form class="d-flex flex-column gap-1 pt-1" [formGroup]="transactionFormData">
 
-    <div class="d-flex flex-column">
-        <label for="account-number">Account number</label>
-        <div class="d-inline-flex flex-row gap-2">
-            <input id="account-number" formControlName="accountNumber" type="text" class="form-control"/>
-            <button class="btn btn-primary receiver" (click)="openContacts()">
-                <i class="fa-solid fa-user"></i>
-            </button>
-        </div>
+  <div class="d-flex flex-column">
+    <label for="account-number">Account number</label>
+    <div class="d-inline-flex flex-row gap-2">
+      <input id="account-number" formControlName="accountNumber" type="text" class="form-control"/>
+      <button class="btn btn-primary receiver" (click)="openContacts()">
+        <i class="fa-solid fa-user"></i>
+      </button>
     </div>
+  </div>
 
-    <div class="d-flex flex-column">
-        <label for="title">Title</label>
-        <input id="title" formControlName="title" type="text" class="form-control"/>
-    </div>
+  <div class="d-flex flex-column">
+    <label for="title">Title</label>
+    <input id="title" formControlName="title" type="text" class="form-control"/>
+  </div>
 
-    <div class="d-flex flex-column">
-        <label for="amount">Amount</label>
-        <input id="amount" formControlName="amount" type="text" class="form-control"/>
-    </div>
+  <div class="d-flex flex-column">
+    <label for="amount">Amount</label>
+    <input id="amount" formControlName="amount" type="text" class="form-control"/>
+  </div>
 
-    <div class="d-flex flex-column">
-        <label for="transaction-date">Transaction date</label>
-        <div class="input-group">
-            <input id="transaction-date"
-                   formControlName="transactionDate"
-                   class="form-control"
-                   placeholder="yyyy-mm-dd"
-                   name="dp"
-                   ngbDatepicker
-                   #transactionDatePicker="ngbDatepicker"
-            />
-            <button class="btn btn-primary" (click)="transactionDatePicker.toggle()"
-                    type="button"><i class="fa fa-calendar-days"></i></button>
-        </div>
+  <div class="d-flex flex-column">
+    <label for="transaction-date">Transaction date</label>
+    <div class="input-group">
+      <input id="transaction-date"
+             formControlName="transactionDate"
+             class="form-control"
+             placeholder="yyyy-mm-dd"
+             name="dp"
+             ngbDatepicker
+             #transactionDatePicker="ngbDatepicker"
+      />
+      <button class="btn btn-primary" (click)="transactionDatePicker.toggle()"
+              type="button"><i class="fa fa-calendar-days"></i></button>
     </div>
+  </div>
 
-    <div class="d-flex pt-3">
-        <button type="submit" class="btn btn-primary w-100">Submit</button>
-    </div>
+  <div class="d-flex pt-3">
+    <button type="submit" class="btn btn-primary w-100">Submit</button>
+  </div>
 
 </form>

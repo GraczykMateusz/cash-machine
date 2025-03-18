@@ -13,14 +13,14 @@ export class UserContactsService {
 
   private readonly http: HttpClient = inject(HttpClient);
   private readonly _allUserContacts: WritableSignal<AllUserContacts | undefined> = signal(undefined);
-  
+
   constructor() {
     const url: string = ApiBuilder.api.v1.account(this.accountId).contacts.build();
     this.http.get<AllUserContacts>(url)
-      .pipe(first())
-      .subscribe((value: AllUserContacts) => this._allUserContacts.set(value));
+    .pipe(first())
+    .subscribe((value: AllUserContacts) => this._allUserContacts.set(value));
   }
-  
+
   get allUserContacts(): Signal<AllUserContacts | undefined> {
     return computed(() => this._allUserContacts());
   }

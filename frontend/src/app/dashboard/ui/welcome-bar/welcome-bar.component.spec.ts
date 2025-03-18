@@ -11,7 +11,7 @@ describe('WelcomeBarComponent', () => {
       imports: [WelcomeBarComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(WelcomeBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

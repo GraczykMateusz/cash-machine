@@ -11,7 +11,7 @@ describe('ChartTenMinutesFilterButtonComponent', () => {
       imports: [ChartTenMinutesFilterButtonComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ChartTenMinutesFilterButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

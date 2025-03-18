@@ -11,7 +11,7 @@ describe('LoadingSpinnerComponent', () => {
       imports: [LoadingSpinnerComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(LoadingSpinnerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

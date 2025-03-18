@@ -11,7 +11,7 @@ describe('ChartTypeSwitchButtonComponent', () => {
       imports: [ChartTypeSwitchButtonComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ChartTypeSwitchButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

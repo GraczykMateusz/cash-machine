@@ -11,7 +11,7 @@ describe('ForexComponent', () => {
       imports: [ForexComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ForexComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -11,7 +11,7 @@ describe('AccountComponent', () => {
       imports: [AccountComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(AccountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

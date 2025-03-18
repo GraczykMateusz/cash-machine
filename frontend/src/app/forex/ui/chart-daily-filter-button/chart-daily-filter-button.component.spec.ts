@@ -11,7 +11,7 @@ describe('ChartDailyFilterButtonComponent', () => {
       imports: [ChartDailyFilterButtonComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ChartDailyFilterButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

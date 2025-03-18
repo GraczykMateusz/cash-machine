@@ -11,7 +11,7 @@ describe('TransactionFormComponent', () => {
       imports: [TransactionFormComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(TransactionFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

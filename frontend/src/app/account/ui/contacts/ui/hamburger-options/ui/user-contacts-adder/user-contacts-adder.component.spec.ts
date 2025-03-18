@@ -11,7 +11,7 @@ describe('UserContactsAdderComponent', () => {
       imports: [UserContactsAdderComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(UserContactsAdderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -11,7 +11,7 @@ describe('UserContactsFilterComponent', () => {
       imports: [UserContactsFilterComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(UserContactsFilterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

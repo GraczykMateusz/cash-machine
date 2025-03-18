@@ -4,14 +4,14 @@ import { NavBarComponent } from './ui/nav-bar/nav-bar.component';
 import { LanguageComponent } from '../language/language.component';
 
 @Component({
-    selector: 'app-dashboard',
-    imports: [
-        WelcomeBarComponent,
-        NavBarComponent,
-        LanguageComponent
-    ],
-    templateUrl: './dashboard.component.html',
-    styleUrl: './dashboard.component.scss'
+  selector: 'app-dashboard',
+  imports: [
+    WelcomeBarComponent,
+    NavBarComponent,
+    LanguageComponent
+  ],
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
 
